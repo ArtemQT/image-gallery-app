@@ -1,0 +1,36 @@
+@use "@helpers" as *;
+
+.visually-hidden {
+	@include visually-hidden();
+}
+
+.header-container {
+	width: calc(var(--header-container-width) + var(--header-padding-inline) * 2);
+	padding-inline: var(--header-padding-inline);
+	margin-inline: auto;
+}
+
+.footer-container {
+	width: calc(var(--footer-container-width) + var(--footer-padding-inline) * 2);
+	padding-inline: var(--footer-padding-inline);
+	margin-inline: auto;
+}
+
+.gallery-container {
+	width: calc(var(--gallery-container-width) + var(--gallery-padding-inline) * 2);
+	padding-inline: var(--gallery-padding-inline);
+	margin-inline: auto;
+}
+
+.mobile-hidden {
+	@include mobile {
+		display: none !important;
+	}
+}
+
+.mobile-show {
+	@include mobile-above {
+		display: none !important;
+	}
+}
+

@@ -1,0 +1,26 @@
+@use '@helpers' as *;
+
+body {
+	font-family: var(--font-family-base);
+	font-weight: 600;
+	color: var(--color-light);
+	background-color: var(--color-light);
+	font-size: rem(20);
+}
+
+a,
+button,
+input,
+select,
+svg,
+textarea {
+	transition-duration: var(--transition-duration);
+}
+
+a {
+	@include reset-link()
+}
+
+button {
+	@include reset-button();
+}
