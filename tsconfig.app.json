@@ -22,7 +22,21 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/pages/*"],
+      "@features/*": ["src/features/*"],
+      "@shared/*": ["src/shared/*"],
+      "@api/*": ["src/shared/api/*"],
+      "@components/*": ["src/shared/components/*"],
+      "@hooks/*": ["src/shared/hooks/*"],
+      "@styles/*": ["src/shared/styles/*"],
+      "@assets/*": ["src/assets/*"],
+      }
+
   },
   "include": ["src"]
 }
