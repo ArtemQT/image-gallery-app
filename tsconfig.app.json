@@ -33,7 +33,7 @@
             "@api/*": ["src/shared/api/*"],
             "@components/*": ["src/shared/components/*"],
             "@hooks/*": ["src/shared/hooks/*"],
-            "@styles/*": ["src/shared/styles/*"],
+            "@styles/*": ["src/styles/*"],
             "@assets/*": ["src/assets/*"]
         }
     },
