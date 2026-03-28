@@ -34,6 +34,7 @@
             "@components/*": ["src/shared/components/*"],
             "@hooks/*": ["src/shared/hooks/*"],
             "@styles/*": ["src/styles/*"],
+            "@helpers/*": ["src/styles/helpers/*"],
             "@assets/*": ["src/assets/*"]
         }
     },
