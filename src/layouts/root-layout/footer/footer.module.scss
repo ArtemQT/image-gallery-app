@@ -1,0 +1,81 @@
+@use '@helpers' as *;
+
+.footer {
+	background: var(--layout-bg-gradient);
+
+	&Container {
+		padding-top: rem(80);
+		padding-bottom: rem(30);
+	}
+
+	&Socials {
+		display: flex;
+		flex-direction: column;
+		row-gap: rem(25);
+	}
+
+	&Body {
+		display: grid;
+		grid-template-columns: repeat(5, auto);
+		column-gap: rem(85);
+		margin-bottom: rem(30);
+	}
+
+	&Copyright {
+		font-weight: 400;
+		font-size: 16px;
+		color: rgba(255, 255, 255, 0.6);
+	}
+}
+
+.companyDescription {
+	width: rem(248);
+	font-weight: 400;
+	font-size: rem(14);
+	color: rgba(255, 255, 255, 0.6);
+	line-height: 157%;
+}
+
+.socials {
+
+	&List {
+		display: flex;
+		column-gap: rem(12);
+	}
+
+	&Item {
+		width: rem(30);
+		height: rem(30);
+		border-radius: 50%;
+		background-color: var(--color-light);
+
+		transition-duration: var(--transition-duration);
+		@include hover {
+			background-color: var(--color-accent);
+
+			& path {
+				fill: var(--color-light);
+			}
+		}
+
+		> a {
+			@include flex-center();
+			width: rem(30);
+			height: rem(30);
+		}
+	}
+
+	&Img {
+		width: rem(17);
+		height: rem(17);
+
+		& path {
+			fill: var(--color-dark);
+		}
+	}
+}
+
+.logo {
+	min-width: rem(267);
+}
+

@@ -1,3 +1,3 @@
 export const CategoryPage = () => {
-    return <h1>Category page</h1>;
+    return <h1 style={{ height: '700px' }}>Category page</h1>;
 };

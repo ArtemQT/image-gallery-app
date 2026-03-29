@@ -1,0 +1,35 @@
+@use '@helpers' as *;
+
+.column {
+	display: flex;
+	flex-direction: column;
+	row-gap: rem(25);
+
+	&Title {
+		font-size: rem(20);
+		font-weight: 400;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--color-accent);
+	}
+}
+
+.link {
+
+	&List {
+		display: flex;
+		flex-direction: column;
+		row-gap: rem(20);
+	}
+
+	&Item {
+		font-size: rem(20);
+		font-weight: 400;
+		color: rgba(255, 255, 255, 0.6);
+
+		transition-duration: var(--transition-duration);
+		@include hover {
+			color: var(--color-accent-light);
+		}
+	}
+}
