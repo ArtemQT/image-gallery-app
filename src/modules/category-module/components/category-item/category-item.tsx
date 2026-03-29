@@ -1,5 +1,6 @@
 import styles from './category-item.module.scss';
 import { Link } from 'react-router-dom';
+import type { FC } from 'react';
 
 interface ICategoryItemProps {
     categoryTitle: string;
@@ -7,11 +8,11 @@ interface ICategoryItemProps {
     categoryName: string;
 }
 
-export const CategoryItem = ({
+export const CategoryItem: FC<ICategoryItemProps> = ({
     categoryTitle,
     categoryName,
     categoryImg,
-}: ICategoryItemProps) => {
+}) => {
     return (
         <Link to={`/images/${categoryName}`} className={styles.categoryLink}>
             <img
