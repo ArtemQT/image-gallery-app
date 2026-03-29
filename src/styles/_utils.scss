@@ -5,19 +5,22 @@
 }
 
 .header-container {
-	width: calc(var(--header-container-width) + var(--header-padding-inline) * 2);
+	max-width: calc(var(--header-container-width) + var(--header-padding-inline) * 2);
+	width: 100%;
 	padding-inline: var(--header-padding-inline);
 	margin-inline: auto;
 }
 
 .footer-container {
-	width: calc(var(--footer-container-width) + var(--footer-padding-inline) * 2);
+	max-width: calc(var(--footer-container-width) + var(--footer-padding-inline) * 2);
+	width: 100%;
 	padding-inline: var(--footer-padding-inline);
 	margin-inline: auto;
 }
 
 .gallery-container {
-	width: calc(var(--gallery-container-width) + var(--gallery-padding-inline) * 2);
+	max-width: calc(var(--gallery-container-width) + var(--gallery-padding-inline) * 2);
+	width: 100%;
 	padding-inline: var(--gallery-padding-inline);
 	margin-inline: auto;
 }

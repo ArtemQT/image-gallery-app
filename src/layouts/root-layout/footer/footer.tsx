@@ -39,13 +39,15 @@ export const Footer = () => {
                             ))}
                         </ul>
                     </div>
-                    {footerColumns.map((footerColumn) => (
-                        <FooterColumn
-                            key={footerColumn.columnTitle}
-                            columnTitle={footerColumn.columnTitle}
-                            links={footerColumn.links}
-                        />
-                    ))}
+                    <div className={styles.footerColumnList}>
+                        {footerColumns.map((footerColumn) => (
+                            <FooterColumn
+                                key={footerColumn.columnTitle}
+                                columnTitle={footerColumn.columnTitle}
+                                links={footerColumn.links}
+                            />
+                        ))}
+                    </div>
                 </div>
                 <p className={styles.footerCopyright}>
                     Modsen.gallery © 2000-2025, All Rights Reserved

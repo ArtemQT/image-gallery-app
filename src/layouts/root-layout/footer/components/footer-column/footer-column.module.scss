@@ -20,6 +20,10 @@
 		display: flex;
 		flex-direction: column;
 		row-gap: rem(20);
+
+		@include mobile-s {
+			display: none;
+		}
 	}
 
 	&Item {
@@ -30,6 +34,10 @@
 		transition-duration: var(--transition-duration);
 		@include hover {
 			color: var(--color-accent-light);
+		}
+
+		@include mobile {
+			font-size: rem(18);
 		}
 	}
 }

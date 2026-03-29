@@ -1,16 +1,16 @@
 @use "functions" as *;
 
 $desktop: 1280;
-$desktop-above: 1281;
+$desktop-above: 1280.1;
 
 $tablet: 1023;
-$tablet-above: 1024;
+$tablet-above: 1023.1;
 
 $mobile: 767;
-$mobile-above: 768;
+$mobile-above: 767.1;
 
 $mobile-s: 480;
-$mobile-s-above: 481;
+$mobile-s-above: 480.1;
 
 @mixin desktop() {
 	@media (max-width: rem($desktop)) {
