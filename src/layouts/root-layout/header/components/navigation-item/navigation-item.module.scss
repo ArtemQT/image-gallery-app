@@ -1,0 +1,38 @@
+@use "@helpers" as *;
+
+.navigation{
+
+	&Link {
+		color: #fffdfa;
+		display: flex;
+		align-items: center;
+		column-gap: rem(8);
+
+		@include hover {
+			color: var(--color-accent-light);
+		}
+
+		&Icon {
+			width: rem(20);
+			height: rem(20);
+
+			&[data-is-active="true"] path {
+				stroke: var(--color-accent);
+			}
+		}
+
+		&Text {
+			font-size: rem(24);
+			font-weight: 400;
+			transition-duration: var(--transition-duration);
+
+			&[data-is-active="true"] {
+				color: var(--color-accent);
+			}
+
+			@include tablet {
+				font-size: rem(18);
+			}
+		}
+	}
+}
