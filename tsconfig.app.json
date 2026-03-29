@@ -28,7 +28,7 @@
             "@app/*": ["src/app/*"],
             "@layouts/*": ["src/layouts/*"],
             "@pages/*": ["src/pages/*"],
-            "@features/*": ["src/features/*"],
+            "@modules/*": ["src/modules/*"],
             "@shared/*": ["src/shared/*"],
             "@api/*": ["src/shared/api/*"],
             "@components/*": ["src/shared/components/*"],

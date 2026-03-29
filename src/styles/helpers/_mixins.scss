@@ -10,6 +10,14 @@
 	align-items: center;
 }
 
+@mixin text-shadow() {
+	text-shadow:
+			1px 1px 0 #000,
+			-1px -1px 0 #000,
+			1px -1px 0 #000,
+			-1px 1px 0 #000;
+}
+
 @mixin abs-center() {
 	position: absolute;
 	top: 50%;

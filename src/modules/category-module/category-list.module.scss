@@ -1,0 +1,15 @@
+@use "@helpers" as *;
+
+.category {
+
+	&List {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: rem(26);
+	}
+
+	&Item {
+		width: rem(285);
+		height: rem(245);
+	}
+}
