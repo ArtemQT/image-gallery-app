@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
                 element: <ImagesPage />,
             },
             {
+                path: 'images/:id',
+                element: <ImagesPage />,
+            },
+            {
                 path: 'favourites',
                 element: <FavouritesPage />,
             },

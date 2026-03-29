@@ -1,0 +1,7 @@
+@use '@helpers' as *;
+
+.skeletonCategory {
+	@include skeleton-animation();
+	width: 100%;
+	height: 100%;
+}
