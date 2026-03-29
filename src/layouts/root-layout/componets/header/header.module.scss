@@ -1,0 +1,56 @@
+@use "@helpers" as *;
+
+.header{
+	background: var(--layout-bg-gradient);
+	height: rem(110);
+
+	display: flex;
+	align-items: center;
+
+	&Container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.navigation {
+
+	&List {
+		display: flex;
+		align-items: center;
+		column-gap: rem(44);
+	}
+
+	&Item {
+		&Icon {
+			width: rem(20);
+			height: rem(20);
+
+			&[data-is-active="true"] path {
+				stroke: var(--color-accent);
+			}
+		}
+
+		&Text {
+			font-size: rem(24);
+			font-weight: 400;
+			transition-duration: var(--transition-duration);
+
+			&[data-is-active="true"] {
+				color: var(--color-accent);
+			}
+		}
+	}
+
+	&Link {
+		color: #fffdfa;
+		display: flex;
+		align-items: center;
+		column-gap: rem(8);
+
+		@include hover {
+			color: var(--color-accent-light);
+		}
+	}
+}
