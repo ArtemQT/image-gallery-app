@@ -1,0 +1,30 @@
+@use "@helpers" as *;
+
+.header{
+	background: var(--layout-bg-gradient);
+	height: rem(110);
+
+	display: flex;
+	align-items: center;
+
+	&Container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&Logo {
+		@include mobile-s {
+			width: rem(247);
+		}
+	}
+}
+
+.navigation {
+	&List {
+		display: flex;
+		align-items: center;
+		column-gap: rem(44);
+	}
+}
+

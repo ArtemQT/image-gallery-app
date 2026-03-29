@@ -2,7 +2,7 @@ import categoryIcon from '@assets/icons/category-icon.svg';
 import imagesIcon from '@assets/icons/images-icon.svg';
 import favouritesIcon from '@assets/icons/favourites.svg';
 
-interface ILinkItem {
+export interface ILinkItem {
     iconSrc: string;
     to: string;
     text: string;

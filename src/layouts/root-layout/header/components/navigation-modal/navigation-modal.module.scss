@@ -1,0 +1,74 @@
+@use "@helpers" as *;
+
+.navigation {
+
+	&Modal {
+		position: fixed;
+		z-index: 1000;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 100vw;
+
+		background: var(--layout-bg-gradient);
+
+		opacity: 0;
+		visibility: hidden;
+		transition-duration: var(--transition-duration);
+
+		&[data-is-open="true"] {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	&List {
+		position: absolute;
+		top: 30%;
+		right: 50%;
+		translate: 50% 0;
+
+		display: flex;
+		flex-direction: column;
+		row-gap: rem(50);
+	}
+
+	&Item {
+		flex-shrink: 0;
+	}
+
+}
+
+.closeButton {
+	@include square(40);
+	position: absolute;
+	top: rem(35);
+	right: rem(16);
+
+	&::before, &::after {
+		@include abs-center();
+
+		content: "";
+
+		display: inline-block;
+		width: 100%;
+		height: rem(3);
+		background-color: var(--color-accent);
+		border-radius: rem(10);
+
+		transition-duration: var(--transition-duration);
+	}
+
+	&::before {
+		rotate: 45deg;
+	}
+
+	&::after {
+		rotate: -45deg;
+	}
+
+	&Wrapper {
+		display: flex;
+		justify-content: end;
+	}
+}

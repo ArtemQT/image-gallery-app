@@ -1,6 +1,6 @@
 @use "functions" as *;
 
-@mixin flex-center($is-inline) {
+@mixin flex-center($is-inline: false) {
 	@if ($is-inline == true) {
 		display: inline-flex;
 	} @else {
@@ -18,8 +18,8 @@
 }
 
 @mixin square($width) {
-	width: #{rem($width)}px;
-	height: #{rem($width)}px;
+	width: #{rem($width)};
+	height: #{rem($width)};
 }
 
 @mixin reset-button() {

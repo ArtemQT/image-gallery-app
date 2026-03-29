@@ -28,7 +28,7 @@
 	}
 }
 
-.mobile-show {
+.mobile-visible {
 	@include mobile-above {
 		display: none !important;
 	}
