@@ -1,9 +1,9 @@
 import type {
     ICategory,
-    IUnsplashCategoryDTO,
+    ICategoryDTO,
 } from '@api/unsplash-api/unsplash-api-types.ts';
 
-export const mapToCategory = (dto: IUnsplashCategoryDTO): ICategory => ({
+export const mapToCategory = (dto: ICategoryDTO): ICategory => ({
     id: dto.id,
     categoryName: dto.slug,
     title: dto.title,

@@ -2,23 +2,25 @@
 
 .heroSection {
 	background: url("@assets/images/hero-bg.jpg") center/cover no-repeat;
-	padding-block: rem(96);
+	padding-block: rem(65);
 
 	@include tablet {
-		padding: rem(45) rem(20);
+		padding: rem(30) rem(20) rem(20) rem(20);
 	}
 
 	&Title {
 		@include text-shadow();
 
 		font-weight: 700;
-		font-size: rem(96);
+		font-size: rem(64);
 		text-transform: capitalize;
 		text-align: center;
 		color: #fffdfa;
+		margin-bottom: rem(87);
 
 		@include mobile {
-			font-size: rem(48);
+			font-size: rem(32);
+			margin-bottom: rem(26);
 		}
 	}
 }

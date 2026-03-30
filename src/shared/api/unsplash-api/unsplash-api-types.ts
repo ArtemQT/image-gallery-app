@@ -1,4 +1,4 @@
-export interface IUnsplashCategoryDTO {
+export interface ICategoryDTO {
     id: string;
     slug: string;
     title: string;

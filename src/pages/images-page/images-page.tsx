@@ -1,3 +1,13 @@
+import { HeroSection } from '@pages/images-page/sections/hero-section/hero-section.tsx';
+import { useParams } from 'react-router-dom';
+
 export const ImagesPage = () => {
-    return <h1>Images page</h1>;
+    const { categoryName } = useParams();
+    console.log(categoryName);
+
+    return (
+        <>
+            <HeroSection />
+        </>
+    );
 };
