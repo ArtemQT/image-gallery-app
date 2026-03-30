@@ -5,7 +5,7 @@ export const CategorySection = () => {
     return (
         <section className={styles.categorySection}>
             <h2 className="visually-hidden">Image categories</h2>
-            <div className="category-container">
+            <div className="content-container">
                 <CategoryList />
             </div>
         </section>

@@ -8,14 +8,24 @@ interface INavigationModalProps {
     handleCloseModal: () => void;
 }
 
-export const NavigationModal = ({ isOpen, handleCloseModal }: INavigationModalProps) => {
+export const NavigationModal = ({
+    isOpen,
+    handleCloseModal,
+}: INavigationModalProps) => {
     return createPortal(
         <div className={styles.navigationModal} data-is-open={isOpen}>
             <nav>
-                <button className={styles.closeButton} onClick={handleCloseModal}></button>
+                <button
+                    className={styles.closeButton}
+                    onClick={handleCloseModal}
+                ></button>
                 <ul className={styles.navigationList}>
                     {links.map((link) => (
-                        <li className={styles.navigationItem} key={link.text}>
+                        <li
+                            className={styles.navigationItem}
+                            key={link.text}
+                            onClick={handleCloseModal}
+                        >
                             <NavigationItem link={link} />
                         </li>
                     ))}
