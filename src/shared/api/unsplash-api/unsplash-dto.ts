@@ -15,9 +15,9 @@ export const mapToCategory = (dto: ICategoryDTO): ICategory => ({
 export const mapToImages = (dto: ISearchDTO): ISearch => ({
     totalImages: dto.total,
     totalPages: dto.total_pages,
-    results: dto.results.map((image) => ({
+    imagesList: dto.results.map((image) => ({
         id: image.id,
-        description: image.description,
+        description: image.alt_description || 'No description',
         imageUrl: image.urls.regular,
     })),
 });

@@ -7,6 +7,10 @@
 	column-gap: rem(11);
 	margin-bottom: rem(25);
 
+	&[data-is-empty-search="false"] {
+		display: none;
+	}
+
 	@include mobile {
 		justify-content: center;
 	}

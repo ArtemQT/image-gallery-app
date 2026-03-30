@@ -7,9 +7,7 @@ export const useImages = () => {
     const { categoryName } = useParams();
     const { debouncedSearchQuery, sortType, page } = useSearchContext();
 
-    console.log(debouncedSearchQuery);
-
-    const { data, isLoading, error } = useQuery({
+    const { data, isLoading, error, refetch } = useQuery({
         queryKey: [
             'images',
             debouncedSearchQuery,
@@ -24,12 +22,12 @@ export const useImages = () => {
                 page,
                 sortType,
             ),
-        placeholderData: (previousData) => previousData,
     });
 
     return {
         data,
-        isLoading,
-        error,
+        refetch,
+        isImagesLoading: isLoading,
+        imagesError: error,
     };
 };

@@ -1,0 +1,25 @@
+@use '@helpers' as *;
+
+.errorContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: rem(20);
+
+	> p {
+		font-size: rem(40);
+		font-weight: 400;
+		color: var(--color-dark);
+	}
+
+	> button {
+		border: rem(1) solid var(--color-dark);
+		padding: rem(10) rem(20);
+
+		@include hover {
+			background-color: var(--color-accent);
+			color: var(--color-light);
+			border-color: transparent;
+		}
+	}
+}

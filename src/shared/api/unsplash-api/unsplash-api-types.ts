@@ -24,7 +24,7 @@ export interface ISearchDTO {
 
 interface IImageDTO {
     id: string;
-    description: string;
+    alt_description: string;
     urls: {
         regular: string;
     };
@@ -33,7 +33,7 @@ interface IImageDTO {
 export interface ISearch {
     totalPages: number;
     totalImages: number;
-    results: IImage[];
+    imagesList: IImage[];
 }
 
 interface IImage {

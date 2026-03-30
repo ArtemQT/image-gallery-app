@@ -1,0 +1,30 @@
+@use '@helpers' as *;
+
+.imagesList {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: rem(26);
+	margin-bottom: rem(26);
+
+	&Item {
+		height: rem(232);
+	}
+}
+
+.emptyImagesListDescription {
+	padding-block: rem(100);
+	font-family: var(--font-family-secondary);
+	font-weight: 700;
+	font-size: rem(64);
+	text-transform: capitalize;
+	text-align: center;
+	color: #393939;
+
+	@include mobile {
+		font-size: rem(48);
+	}
+}
+
+.accent {
+	color: var(--color-accent-light);
+}

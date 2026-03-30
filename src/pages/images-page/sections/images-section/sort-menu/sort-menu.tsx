@@ -1,15 +1,19 @@
 import styles from './sort-menu.module.scss';
 import { useState } from 'react';
 import { sortOptionsList } from '@shared/utils/sort-menu-list.ts';
-import { useSearchContext } from '@modules/images-module';
+import { useImages, useSearchContext } from '@modules/images-module';
 
 export const SortMenu = () => {
     const { sortType, updateSortType } = useSearchContext();
+    const { data } = useImages();
 
     const [isOpenSortMenu, setIsOpenSortMenu] = useState(false);
 
     return (
-        <div className={styles.wrapper}>
+        <div
+            className={styles.wrapper}
+            data-is-empty-search={!!data?.totalImages}
+        >
             <span>Sort by</span>
             <div className={styles.sortMenu}>
                 <button

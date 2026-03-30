@@ -1,6 +1,6 @@
-@use '@helpers' as *;
+@use '../../../styles/helpers/index' as *;
 
-.skeletonCategory {
+.skeletonItem {
 	@include skeleton-animation();
 	width: 100%;
 	height: 100%;
