@@ -15,3 +15,29 @@ export interface ICategory {
     title: string;
     imageUrl: string;
 }
+
+export interface ISearchDTO {
+    total: number; // Общее количество найденных фото
+    total_pages: number; // Общее количество страниц
+    results: IImageDTO[]; // Массив самих объектов с фото
+}
+
+interface IImageDTO {
+    id: string;
+    description: string;
+    urls: {
+        regular: string;
+    };
+}
+
+export interface ISearch {
+    totalPages: number;
+    totalImages: number;
+    results: IImage[];
+}
+
+interface IImage {
+    id: string;
+    description: string;
+    imageUrl: string;
+}

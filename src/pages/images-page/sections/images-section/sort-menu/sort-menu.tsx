@@ -1,12 +1,11 @@
 import styles from './sort-menu.module.scss';
 import { useState } from 'react';
-import {
-    sortOptionsList,
-    type TSortType,
-} from '@shared/utils/sort-menu-list.ts';
+import { sortOptionsList } from '@shared/utils/sort-menu-list.ts';
+import { useSearchContext } from '@modules/images-module';
 
 export const SortMenu = () => {
-    const [sortedType, setSortedType] = useState<TSortType>('relevant');
+    const { sortType, updateSortType } = useSearchContext();
+
     const [isOpenSortMenu, setIsOpenSortMenu] = useState(false);
 
     return (
@@ -18,7 +17,7 @@ export const SortMenu = () => {
                     onClick={() => setIsOpenSortMenu(!isOpenSortMenu)}
                     data-is-active-sort-menu={isOpenSortMenu}
                 >
-                    {sortedType}
+                    {sortType}
                 </button>
                 <ul
                     className={styles.sortMenuList}
@@ -29,7 +28,7 @@ export const SortMenu = () => {
                             <button
                                 onClick={() => {
                                     setIsOpenSortMenu(false);
-                                    setSortedType(option);
+                                    updateSortType(option);
                                 }}
                             >
                                 {option}

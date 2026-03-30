@@ -1,15 +1,12 @@
 import { HeroSection } from '@pages/images-page/sections/hero-section/hero-section.tsx';
-import { useParams } from 'react-router-dom';
 import { ImagesSection } from '@pages/images-page/sections/images-section/images-section.tsx';
+import { SearchContextProvider } from '@modules/images-module';
 
 export const ImagesPage = () => {
-    const { categoryName } = useParams();
-    console.log(categoryName);
-
     return (
-        <>
+        <SearchContextProvider>
             <HeroSection />
             <ImagesSection />
-        </>
+        </SearchContextProvider>
     );
 };

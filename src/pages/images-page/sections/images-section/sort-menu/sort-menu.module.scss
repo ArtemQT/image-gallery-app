@@ -5,6 +5,7 @@
 	justify-content: end;
 	align-items: center;
 	column-gap: rem(11);
+	margin-bottom: rem(25);
 
 	@include mobile {
 		justify-content: center;

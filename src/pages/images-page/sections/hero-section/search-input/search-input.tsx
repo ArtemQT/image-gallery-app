@@ -1,10 +1,8 @@
 import styles from './search-input.module.scss';
-import { type ChangeEventHandler, useState } from 'react';
+import { useSearchContext } from '@modules/images-module';
 
 export const SearchInput = () => {
-    const [searchValue, setSearchValue] = useState('');
-    const onChangeSearch: ChangeEventHandler<HTMLInputElement> = (e) =>
-        setSearchValue(e.target.value);
+    const { searchQuery, updateSearchQuery } = useSearchContext();
 
     return (
         <div className={styles.searchWrapper}>
@@ -15,8 +13,8 @@ export const SearchInput = () => {
                 className={styles.searchInput}
                 id="search-input"
                 type="text"
-                value={searchValue}
-                onChange={onChangeSearch}
+                value={searchQuery}
+                onChange={(e) => updateSearchQuery(e.target.value)}
                 placeholder="Search..."
             />
         </div>
