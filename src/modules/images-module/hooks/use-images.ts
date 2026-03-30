@@ -5,12 +5,25 @@ import { useParams } from 'react-router-dom';
 
 export const useImages = () => {
     const { categoryName } = useParams();
-    const { searchQuery, sortType, page } = useSearchContext();
+    const { debouncedSearchQuery, sortType, page } = useSearchContext();
+
+    console.log(debouncedSearchQuery);
 
     const { data, isLoading, error } = useQuery({
-        queryKey: ['images', searchQuery, sortType, page, categoryName],
+        queryKey: [
+            'images',
+            debouncedSearchQuery,
+            sortType,
+            page,
+            categoryName,
+        ],
         queryFn: () =>
-            unsplashApi.getImages(categoryName, searchQuery, page, sortType),
+            unsplashApi.getImages(
+                categoryName,
+                debouncedSearchQuery,
+                page,
+                sortType,
+            ),
         placeholderData: (previousData) => previousData,
     });
 

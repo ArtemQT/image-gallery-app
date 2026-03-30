@@ -4,8 +4,6 @@ import { useImages } from '@modules/images-module/hooks/use-images.ts';
 export const ImagesList = () => {
     const { data } = useImages();
 
-    console.log(data);
-
     return (
         <ul className={styles.imagesList}>
             {data?.results.map((image) => (
