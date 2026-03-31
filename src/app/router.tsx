@@ -5,35 +5,40 @@ import { ImagesPage } from '@pages/images-page/images-page.tsx';
 import { FavouritesPage } from '@pages/favourites-page/favourites-page.tsx';
 import { NotFoundPage } from '@pages/not-found-page/not-found-page.tsx';
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+    [
+        {
+            path: '/',
+            element: <RootLayout />,
+            children: [
+                {
+                    index: true,
+                    element: <CategoryPage />,
+                },
+                {
+                    path: 'category',
+                    element: <CategoryPage />,
+                },
+                {
+                    path: 'images',
+                    element: <ImagesPage />,
+                },
+                {
+                    path: 'images/:categoryName',
+                    element: <ImagesPage />,
+                },
+                {
+                    path: 'favourites',
+                    element: <FavouritesPage />,
+                },
+                {
+                    path: '*',
+                    element: <NotFoundPage />,
+                },
+            ],
+        },
+    ],
     {
-        path: '/',
-        element: <RootLayout />,
-        children: [
-            {
-                index: true,
-                element: <CategoryPage />,
-            },
-            {
-                path: 'category',
-                element: <CategoryPage />,
-            },
-            {
-                path: 'images',
-                element: <ImagesPage />,
-            },
-            {
-                path: 'images/:categoryName',
-                element: <ImagesPage />,
-            },
-            {
-                path: 'favourites',
-                element: <FavouritesPage />,
-            },
-            {
-                path: '*',
-                element: <NotFoundPage />,
-            },
-        ],
+        basename: '/modsen-gallery',
     },
-]);
+);
