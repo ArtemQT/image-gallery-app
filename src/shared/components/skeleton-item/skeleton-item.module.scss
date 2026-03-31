@@ -1,0 +1,7 @@
+@use '../../../styles/helpers/index' as *;
+
+.skeletonItem {
+	@include skeleton-animation();
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,66 @@
+@use '@helpers' as *;
+
+.favourites {
+
+	&Section {
+		min-height: 70vh;
+		padding-block: rem(77) rem(200);
+
+		&Title {
+			text-align: center;
+			color: var(--color-dark-alt);
+			font-weight: 400;
+			font-size: rem(32);
+			margin-bottom: rem(65);
+
+			@include mobile {
+				margin-bottom: rem(88);
+			}
+		}
+	}
+
+	&List {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: rem(26);
+		margin-bottom: rem(26);
+
+		@include tablet {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include mobile {
+			grid-template-columns: 1fr
+		}
+
+		&Item {
+			height: rem(244);
+		}
+	}
+}
+
+.accent {
+	color: var(--color-accent);
+}
+
+.emptySection {
+	padding-block: rem(82) rem(200);
+	height: 70vh;
+
+	&Title {
+		font-family: var(--font-family-secondary);
+		font-weight: 700;
+		font-size: rem(64);
+		text-transform: capitalize;
+		text-align: center;
+		color: var(--color-dark-alt);
+
+		> span {
+			color: var(--color-accent-light);
+		}
+
+		@include mobile {
+			font-size: rem(32);
+		}
+	}
+}

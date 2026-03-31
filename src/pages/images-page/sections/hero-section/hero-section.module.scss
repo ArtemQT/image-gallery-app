@@ -1,0 +1,30 @@
+@use "@helpers" as *;
+
+.heroSection {
+	background: url("@assets/images/hero-bg.jpg") center/cover no-repeat;
+	padding-block: rem(65);
+
+	@include tablet {
+		padding: rem(30) rem(20) rem(20) rem(20);
+	}
+
+	&Title {
+		@include text-shadow();
+
+		font-weight: 700;
+		font-size: rem(64);
+		text-transform: capitalize;
+		text-align: center;
+		color: #fffdfa;
+		margin-bottom: rem(87);
+
+		@include mobile {
+			font-size: rem(32);
+			margin-bottom: rem(26);
+		}
+	}
+}
+
+.accent {
+	color: var(--color-accent-light);
+}

@@ -1,0 +1,27 @@
+@use "@helpers" as *;
+
+.burgerMenu {
+	width: rem(35);
+	height: rem(23);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	&:active {
+		.burgerMenuLine {
+			background-color: var(--color-light);
+		}
+	}
+
+	&Line {
+		display: inline-block;
+		width: 100%;
+		height: rem(3);
+		background-color: var(--color-accent);
+		border-radius: 10px;
+		flex-shrink: 0;
+		transition-duration: var(--transition-duration);
+	}
+
+}

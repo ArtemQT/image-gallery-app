@@ -1,0 +1,39 @@
+@use "@helpers" as *;
+
+.visually-hidden {
+	@include visually-hidden();
+}
+
+.header-container {
+	max-width: calc(var(--header-container-width) + var(--header-padding-inline) * 2);
+	width: 100%;
+	padding-inline: var(--header-padding-inline);
+	margin-inline: auto;
+}
+
+.footer-container {
+	max-width: calc(var(--footer-container-width) + var(--footer-padding-inline) * 2);
+	width: 100%;
+	padding-inline: var(--footer-padding-inline);
+	margin-inline: auto;
+}
+
+.content-container {
+	max-width: calc(var(--gallery-container-width) + var(--gallery-padding-inline) * 2);
+	width: 100%;
+	padding-inline: var(--gallery-padding-inline);
+	margin-inline: auto;
+}
+
+.mobile-hidden {
+	@include mobile {
+		display: none !important;
+	}
+}
+
+.mobile-visible {
+	@include mobile-above {
+		display: none !important;
+	}
+}
+

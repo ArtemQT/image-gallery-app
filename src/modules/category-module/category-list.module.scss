@@ -1,0 +1,24 @@
+@use "@helpers" as *;
+
+.category {
+
+	&List {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: rem(26);
+
+		@include tablet {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include mobile {
+			gap: rem(16);
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&Item {
+		height: rem(245);
+	}
+}
+
