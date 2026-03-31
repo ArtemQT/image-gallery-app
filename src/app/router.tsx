@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
                 element: <ImagesPage />,
             },
             {
-                path: 'images/:id',
+                path: 'images/:categoryName',
                 element: <ImagesPage />,
             },
             {

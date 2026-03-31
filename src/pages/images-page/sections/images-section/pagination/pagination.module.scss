@@ -1,0 +1,70 @@
+@use '@helpers' as *;
+
+@mixin active-pagination {
+	background-color: var(--color-accent-light);
+
+	.paginationButton {
+		font-weight: 600;
+		color: var(--color-light);
+	}
+}
+
+.pagination {
+
+	&Wrapper {
+		display: flex;
+		justify-content: end;
+		align-items: center;
+		column-gap: rem(10);
+
+		&[data-is-empty-search="true"] {
+			display: none;
+		}
+	}
+
+	&List {
+		display: flex;
+		column-gap: rem(10);
+	}
+
+	&Item {
+		@include square(30);
+		border-radius: rem(4);
+		overflow: hidden;
+
+		&[data-is-active-page="true"] {
+			@include active-pagination()
+		}
+
+		@include hover {
+			@include active-pagination()
+		}
+	}
+
+	&Button {
+		width: 100%;
+		height: 100%;
+		font-family: var(--second-family);
+		font-weight: 300;
+		font-size: rem(18);
+		line-height: 133%;
+		color: var(--color-dark-alt);
+	}
+
+	&NextButton {
+		@include hover {
+
+			& path {
+				fill: var(--color-accent-light);
+			}
+		}
+
+		& svg {
+			@include square(15)
+		}
+
+		& path {
+			transition-duration: var(--transition-duration);
+		}
+	}
+}

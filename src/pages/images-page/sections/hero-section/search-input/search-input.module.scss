@@ -1,0 +1,67 @@
+@use "@helpers" as *;
+
+.search {
+
+	&Wrapper {
+		$box-shadow: 0 0 rem(10) rem(2) var(--color-accent-light);
+		position: relative;
+
+		margin-inline: auto;
+		border-radius: rem(8);
+		max-width: rem(808);
+		padding: rem(19) rem(20) rem(19) rem(54);
+		background-color: var(--color-light);
+
+		transition-duration: var(--transition-duration);
+		@include hover {
+			box-shadow: $box-shadow;
+		}
+		&:focus-within {
+			box-shadow: $box-shadow;
+		}
+
+		@include mobile {
+			padding: rem(15) rem(60) rem(15) rem(15);
+		}
+
+		&::before {
+			@include square(20);
+
+			content: "";
+
+			position: absolute;
+			top: 50%;
+			left: rem(25);
+			translate: 0 -50%;
+
+			display: block;
+
+			background: url("@assets/icons/search-icon.svg") center/contain no-repeat;
+
+			@include mobile {
+				@include square(30);
+				left: auto;
+				right: rem(15);
+			}
+		}
+	}
+
+	&Input {
+		width: 100%;
+		padding: 0;
+		border: none;
+
+		font-family: var(--font-family-montserrat);
+		font-weight: 500;
+		font-size: rem(14);
+		color: var(--color-dark);
+
+		&:focus {
+			outline: none;
+		}
+
+		@include mobile {
+			font-size: rem(16);
+		}
+	}
+}
