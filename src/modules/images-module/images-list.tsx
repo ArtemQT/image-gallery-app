@@ -1,11 +1,11 @@
 import styles from './images-list.module.scss';
 import { useImages } from '@modules/images-module/hooks/use-images.ts';
-import { ImageCard } from '@modules/images-module/components/image-card/image-card.tsx';
 import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
 import { ErrorFetchContainer } from '@components/error-fetch-container/error-fetch-container.tsx';
 import { useState } from 'react';
 import type { IImage } from '@api/unsplash-api/unsplash-api-types.ts';
 import { SelectedImage } from '@modules/images-module/components/selected-image/selected-image.tsx';
+import { ImageCard } from '@components/image-card/image-card.tsx';
 
 export const ImagesList = () => {
     const { data, isImagesLoading, imagesError, refetch } = useImages();
