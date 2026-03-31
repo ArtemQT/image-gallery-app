@@ -4,11 +4,9 @@ import * as path from 'node:path';
 import svgr from 'vite-plugin-svgr';
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => {
-    const isProd = mode === 'production';
-
+export default defineConfig(() => {
     return {
-        base: isProd ? '/modsen-gallery/' : '/',
+        base: '/modsen-gallery/',
         plugins: [react(), svgr()],
         resolve: {
             alias: {
