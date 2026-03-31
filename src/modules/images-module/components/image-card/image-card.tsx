@@ -5,12 +5,20 @@ interface IImageCardProps {
     imageId: string;
     imageDescription: string;
     imageUrl: string;
+    isSelected?: boolean;
 }
 
-export const ImageCard = ({ imageDescription, imageUrl }: IImageCardProps) => {
+export const ImageCard = ({
+    imageDescription,
+    imageUrl,
+    isSelected,
+}: IImageCardProps) => {
     return (
-        <article>
-            <figure className={styles.imageCard}>
+        <article className={styles.imageArticle}>
+            <figure
+                className={styles.imageCard}
+                data-is-selected-image={isSelected}
+            >
                 <img
                     src={imageUrl}
                     alt={imageDescription}
@@ -23,7 +31,7 @@ export const ImageCard = ({ imageDescription, imageUrl }: IImageCardProps) => {
                     </span>
                     <button
                         className={styles.imageToggleFavoriteButton}
-                        data-is-favourite-image="true"
+                        data-is-favourite-image="false"
                     >
                         <FavouriteIcon className={styles.favouriteIcon} />
                     </button>

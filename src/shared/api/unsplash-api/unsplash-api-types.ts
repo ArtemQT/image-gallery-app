@@ -36,7 +36,7 @@ export interface ISearch {
     imagesList: IImage[];
 }
 
-interface IImage {
+export interface IImage {
     id: string;
     description: string;
     imageUrl: string;
