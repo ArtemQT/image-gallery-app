@@ -3,6 +3,7 @@
 .favourites {
 
 	&Section {
+		min-height: 70vh;
 		padding-block: rem(77) rem(200);
 
 		&Title {
@@ -44,6 +45,7 @@
 
 .emptySection {
 	padding-block: rem(82) rem(200);
+	height: 70vh;
 
 	&Title {
 		font-family: var(--font-family-secondary);
