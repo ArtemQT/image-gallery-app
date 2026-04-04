@@ -5,14 +5,14 @@ import { useLockScroll } from '@hooks/use-lock-scroll.ts';
 
 interface ISelectedImageProps {
     children: ReactNode;
-    handleCloseSelectedCard: () => void;
-    handleChangeSelectedCard: (buttonType: 'prev' | 'next') => void;
+    handleCloseSelectedImg: () => void;
+    handleChangeSelectedImg: (buttonType: 'prev' | 'next') => void;
 }
 
 export const SelectedImage = ({
     children,
-    handleCloseSelectedCard,
-    handleChangeSelectedCard,
+    handleCloseSelectedImg,
+    handleChangeSelectedImg,
 }: ISelectedImageProps) => {
     useLockScroll();
 
@@ -20,15 +20,15 @@ export const SelectedImage = ({
         const handleKeyDown = (e: KeyboardEvent) => {
             switch (e.key) {
                 case 'ArrowLeft': {
-                    handleChangeSelectedCard('prev');
+                    handleChangeSelectedImg('prev');
                     break;
                 }
                 case 'ArrowRight': {
-                    handleChangeSelectedCard('next');
+                    handleChangeSelectedImg('next');
                     break;
                 }
                 case 'Escape': {
-                    handleCloseSelectedCard();
+                    handleCloseSelectedImg();
                     break;
                 }
             }
@@ -39,26 +39,26 @@ export const SelectedImage = ({
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [handleChangeSelectedCard]);
+    }, [handleChangeSelectedImg]);
 
     return createPortal(
-        <div className={styles.modal} onClick={handleCloseSelectedCard}>
+        <div className={styles.modal} onClick={handleCloseSelectedImg}>
             <div
                 className={styles.modalInner}
                 onClick={(e) => e.stopPropagation()}
             >
                 <button
                     className={styles.closeModalButton}
-                    onClick={handleCloseSelectedCard}
+                    onClick={handleCloseSelectedImg}
                 ></button>
                 <div className={styles.selectedCard}>{children}</div>
                 <button
                     className={styles.cardButtonPrev}
-                    onClick={() => handleChangeSelectedCard('prev')}
+                    onClick={() => handleChangeSelectedImg('prev')}
                 ></button>
                 <button
                     className={styles.cardButtonNext}
-                    onClick={() => handleChangeSelectedCard('next')}
+                    onClick={() => handleChangeSelectedImg('next')}
                 ></button>
             </div>
         </div>,

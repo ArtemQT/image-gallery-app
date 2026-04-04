@@ -7,21 +7,19 @@ export const useImages = () => {
     const { categoryName } = useParams();
     const { debouncedSearchQuery, sortType, page } = useSearchContext();
 
+    let query = '';
+
+    if (debouncedSearchQuery) {
+        query = debouncedSearchQuery;
+    } else if (categoryName) {
+        query = categoryName;
+    } else {
+        query = 'featured';
+    }
+
     const { data, isLoading, error, refetch } = useQuery({
-        queryKey: [
-            'images',
-            debouncedSearchQuery,
-            sortType,
-            page,
-            categoryName,
-        ],
-        queryFn: () =>
-            unsplashApi.getImages(
-                categoryName,
-                debouncedSearchQuery,
-                page,
-                sortType,
-            ),
+        queryKey: ['images', query, sortType, page],
+        queryFn: () => unsplashApi.getImages(query, page, sortType),
     });
 
     return {

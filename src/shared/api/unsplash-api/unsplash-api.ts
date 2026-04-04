@@ -20,17 +20,12 @@ export const unsplashApi = {
         return response.data.map(mapToCategory);
     },
 
-    async getImages(
-        categoryName: string = 'featured',
-        searchQuery: string = '',
-        pageNumber: number = 1,
-        orderBy: TSortType,
-    ) {
+    async getImages(query: string, pageNumber: number, orderBy: TSortType) {
         const response = await unsplashApiInstance.get<ISearchDTO>(
             '/search/photos',
             {
                 params: {
-                    query: `${categoryName} ${searchQuery}`,
+                    query: query,
                     order_by: orderBy,
                     page: pageNumber,
                     per_page: 12,

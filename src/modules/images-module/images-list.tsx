@@ -2,43 +2,18 @@ import styles from './images-list.module.scss';
 import { useImages } from '@modules/images-module/hooks/use-images.ts';
 import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
 import { ErrorFetchContainer } from '@components/error-fetch-container/error-fetch-container.tsx';
-import { useState } from 'react';
-import type { IImage } from '@api/unsplash-api/unsplash-api-types.ts';
-import { SelectedImage } from '@modules/images-module/components/selected-image/selected-image.tsx';
 import { ImageCard } from '@components/image-card/image-card.tsx';
+import { useSelectedImg } from '@hooks/use-selected-img.ts';
+import { SelectedImage } from '@components/selected-image/selected-image.tsx';
 
 export const ImagesList = () => {
     const { data, isImagesLoading, imagesError, refetch } = useImages();
-    const [selectedCard, setSelectedCard] = useState<IImage | null>(null);
-
-    const handleCloseSelectedCard = () => setSelectedCard(null);
-    const handleChangeSelectedCard = (buttonType: 'prev' | 'next') => {
-        if (selectedCard && data) {
-            const imageIndex = data.imagesList.indexOf(selectedCard);
-            if (imageIndex !== -1) {
-                switch (buttonType) {
-                    case 'prev': {
-                        if (imageIndex === 0) {
-                            setSelectedCard(
-                                data.imagesList[data.imagesList.length - 1],
-                            );
-                        } else {
-                            setSelectedCard(data.imagesList[imageIndex - 1]);
-                        }
-                        break;
-                    }
-                    case 'next': {
-                        if (imageIndex === data.imagesList.length - 1) {
-                            setSelectedCard(data.imagesList[0]);
-                        } else {
-                            setSelectedCard(data.imagesList[imageIndex + 1]);
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-    };
+    const {
+        selectedImg,
+        handleChangeSelectedImg,
+        handleOpenSelectedImg,
+        handleCloseSelectedImg,
+    } = useSelectedImg(data?.imagesList);
 
     if (isImagesLoading) {
         return (
@@ -74,7 +49,7 @@ export const ImagesList = () => {
                 {imagesList?.map((image) => (
                     <li
                         key={image.id}
-                        onClick={() => setSelectedCard(image)}
+                        onClick={() => handleOpenSelectedImg(image.id)}
                         className={styles.imagesListItem}
                     >
                         <ImageCard
@@ -85,15 +60,15 @@ export const ImagesList = () => {
                     </li>
                 ))}
             </ul>
-            {selectedCard && (
+            {selectedImg && (
                 <SelectedImage
-                    handleCloseSelectedCard={handleCloseSelectedCard}
-                    handleChangeSelectedCard={handleChangeSelectedCard}
+                    handleCloseSelectedImg={handleCloseSelectedImg}
+                    handleChangeSelectedImg={handleChangeSelectedImg}
                 >
                     <ImageCard
-                        imageId={selectedCard.id}
-                        imageDescription={selectedCard.description}
-                        imageUrl={selectedCard.imageUrl}
+                        imageId={selectedImg.id}
+                        imageDescription={selectedImg.description}
+                        imageUrl={selectedImg.imageUrl}
                         isSelected={true}
                     />
                 </SelectedImage>
