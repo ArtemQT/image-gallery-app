@@ -1,6 +1,6 @@
 import styles from './navigation-modal.module.scss';
 import { createPortal } from 'react-dom';
-import { links } from '@shared/utils/header-links-list.ts';
+import { links } from '@shared/constants/header-links-list.ts';
 import { NavigationItem } from '@layouts/root-layout/header/components/navigation-item/navigation-item.tsx';
 
 interface INavigationModalProps {

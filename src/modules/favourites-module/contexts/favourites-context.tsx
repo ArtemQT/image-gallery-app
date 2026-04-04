@@ -6,6 +6,7 @@ import {
     useEffect,
     useState,
 } from 'react';
+import { SessionStorage } from '@shared/lib/session-storage.ts';
 
 interface IFavouritesContext {
     favouritesList: IImage[];
@@ -18,13 +19,15 @@ export const FavouritesContext = createContext<IFavouritesContext | null>(null);
 export const FavouritesContextProvider: FC<PropsWithChildren> = ({
     children,
 }) => {
+    const sessionStorageKey = 'favouritesList';
+
     const [favouritesList, setFavouritesList] = useState<IImage[]>(() => {
-        const savedList = localStorage.getItem('favouritesList');
-        return savedList ? JSON.parse(savedList) : [];
+        const savedList = SessionStorage.get<IImage[]>(sessionStorageKey);
+        return savedList ? savedList : [];
     });
 
     useEffect(() => {
-        localStorage.setItem('favouritesList', JSON.stringify(favouritesList));
+        SessionStorage.set(sessionStorageKey, favouritesList);
     }, [favouritesList]);
 
     const isFavourite = (imageId: string) => {

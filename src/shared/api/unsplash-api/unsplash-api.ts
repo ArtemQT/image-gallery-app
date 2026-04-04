@@ -4,7 +4,7 @@ import type {
 } from '@api/unsplash-api/unsplash-api-types.ts';
 import { mapToCategory, mapToImages } from '@api/unsplash-api/unsplash-dto.ts';
 import { unsplashApiInstance } from '@api/unsplash-api/unsplash-axios-instance.ts';
-import type { TSortType } from '@shared/utils/sort-menu-list.ts';
+import type { TSortType } from '@shared/constants/sort-menu-list.ts';
 
 export const unsplashApi = {
     async getCategories() {

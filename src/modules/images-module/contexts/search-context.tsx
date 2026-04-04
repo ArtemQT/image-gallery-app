@@ -1,4 +1,4 @@
-import type { TSortType } from '@shared/utils/sort-menu-list.ts';
+import type { TSortType } from '@shared/constants/sort-menu-list.ts';
 import { createContext, useState } from 'react';
 import type { FC, PropsWithChildren } from 'react';
 import { useDebounce } from '@hooks/use-debounce.ts';

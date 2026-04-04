@@ -1,6 +1,6 @@
 import styles from './sort-menu.module.scss';
 import { useState } from 'react';
-import { sortOptionsList } from '@shared/utils/sort-menu-list.ts';
+import { sortOptionsList } from '@shared/constants/sort-menu-list.ts';
 import { useImages, useSearchContext } from '@modules/images-module';
 
 export const SortMenu = () => {
