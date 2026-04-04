@@ -46,7 +46,7 @@
 	&Copyright {
 		font-weight: 400;
 		font-size: 16px;
-		color: rgba(255, 255, 255, 0.6);
+		color: #ffffff99;
 
 		@include mobile-s {
 			text-align: center;
@@ -79,7 +79,7 @@
 	width: rem(248);
 	font-weight: 400;
 	font-size: rem(16);
-	color: rgba(255, 255, 255, 0.6);
+	color: #ffffff99;
 	line-height: 157%;
 }
 

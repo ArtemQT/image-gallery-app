@@ -57,7 +57,7 @@
 
 	@include hover {
 		transform: translateY(-2px);
-		box-shadow: 0 rem(4) rem(12) rgba(255, 165, 0, 0.3);
+		box-shadow: 0 rem(4) rem(12) #ffa5004d;
 	}
 
 	&:active {
