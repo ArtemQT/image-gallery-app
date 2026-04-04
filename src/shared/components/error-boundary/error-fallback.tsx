@@ -1,9 +1,24 @@
-import { type FallbackProps } from 'react-error-boundary';
 import styles from './error-fallback.module.scss';
+import { useNavigate } from 'react-router-dom';
 
-export const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
+interface IFallbackProps {
+    error: Error | null;
+    resetErrorBoundary: () => void;
+}
+
+export const ErrorFallback = ({
+    error,
+    resetErrorBoundary,
+}: IFallbackProps) => {
+    const navigate = useNavigate();
+
     const errorMessage =
         error instanceof Error ? error.message : 'Unknown error';
+
+    const handleReset = () => {
+        navigate('/', { replace: true });
+        resetErrorBoundary();
+    };
 
     return (
         <section className={styles.errorSection}>
@@ -20,10 +35,7 @@ export const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
                     <code>{errorMessage}</code>
                 </div>
 
-                <button
-                    className={styles.resetButton}
-                    onClick={resetErrorBoundary}
-                >
+                <button className={styles.resetButton} onClick={handleReset}>
                     Try again
                 </button>
             </div>

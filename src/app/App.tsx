@@ -6,17 +6,10 @@ import { queryClient } from '@app/query-client.ts';
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { FavouritesContextProvider } from '@modules/favourites-module';
 import { Toaster } from 'react-hot-toast';
-import { ErrorBoundary } from 'react-error-boundary';
-import { ErrorFallback } from '@components/error-fallback/error-fallback.tsx';
 
 export const App = () => {
     return (
-        <ErrorBoundary
-            FallbackComponent={ErrorFallback}
-            onReset={() => {
-                window.location.href = '/';
-            }}
-        >
+        <>
             <QueryClientProvider client={queryClient}>
                 <FavouritesContextProvider>
                     <RouterProvider router={router} />
@@ -24,6 +17,6 @@ export const App = () => {
                     {/*<ReactQueryDevtools initialIsOpen={false} />*/}
                 </FavouritesContextProvider>
             </QueryClientProvider>
-        </ErrorBoundary>
+        </>
     );
 };
