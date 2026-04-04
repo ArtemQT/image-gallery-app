@@ -1,7 +1,7 @@
-import type { TSortType } from '@shared/constants/sort-menu-list.ts';
-import { createContext, useState } from 'react';
-import type { FC, PropsWithChildren } from 'react';
 import { useDebounce } from '@hooks/use-debounce.ts';
+import type { TSortType } from '@shared/constants/sort-menu-list.ts';
+import type { FC, PropsWithChildren } from 'react';
+import { createContext, useState } from 'react';
 
 interface ISearchContext {
     page: number;

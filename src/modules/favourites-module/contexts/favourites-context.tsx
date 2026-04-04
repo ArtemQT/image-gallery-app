@@ -1,4 +1,5 @@
 import type { IImage } from '@api/unsplash-api/unsplash-api-types.ts';
+import { SessionStorage } from '@shared/lib/session-storage.ts';
 import {
     createContext,
     type FC,
@@ -6,7 +7,6 @@ import {
     useEffect,
     useState,
 } from 'react';
-import { SessionStorage } from '@shared/lib/session-storage.ts';
 
 interface IFavouritesContext {
     favouritesList: IImage[];

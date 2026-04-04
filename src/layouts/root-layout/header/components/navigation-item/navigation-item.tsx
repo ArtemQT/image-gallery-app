@@ -1,7 +1,8 @@
-import styles from './navigation-item.module.scss';
-import { ReactSVG } from 'react-svg';
-import { NavLink } from 'react-router-dom';
 import type { ILinkItem } from '@shared/constants/header-links-list.ts';
+import { NavLink } from 'react-router-dom';
+import { ReactSVG } from 'react-svg';
+
+import styles from './navigation-item.module.scss';
 
 interface INavigationItemProps {
     link: ILinkItem;

@@ -1,10 +1,10 @@
-import styles from './footer.module.scss';
-
 import logoImg from '@assets/icons/logo.svg';
-import { socials } from '@shared/constants/footer-socials-list.ts';
-import { footerColumns } from '@shared/constants/footer-columns-list.ts';
 import { FooterColumn } from '@layouts/root-layout/footer/components/footer-column/footer-column.tsx';
+import { footerColumns } from '@shared/constants/footer-columns-list.ts';
+import { socials } from '@shared/constants/footer-socials-list.ts';
 import { Link } from 'react-router-dom';
+
+import styles from './footer.module.scss';
 
 export const Footer = () => {
     return (

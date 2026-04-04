@@ -1,8 +1,9 @@
-import styles from './favourites-page.module.scss';
 import {
     FavouritesList,
     useFavouritesContext,
 } from '@modules/favourites-module';
+
+import styles from './favourites-page.module.scss';
 
 export const FavouritesPage = () => {
     const { favouritesList } = useFavouritesContext();

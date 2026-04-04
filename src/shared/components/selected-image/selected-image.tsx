@@ -1,7 +1,8 @@
-import styles from './selected-image.module.scss';
+import { useLockScroll } from '@hooks/use-lock-scroll.ts';
 import { type ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useLockScroll } from '@hooks/use-lock-scroll.ts';
+
+import styles from './selected-image.module.scss';
 
 interface ISelectedImageProps {
     children: ReactNode;

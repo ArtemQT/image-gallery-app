@@ -1,5 +1,6 @@
-import styles from './category-section.module.scss';
 import { CategoryList } from '@modules/category-module';
+
+import styles from './category-section.module.scss';
 
 export const CategorySection = () => {
     return (

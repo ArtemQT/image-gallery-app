@@ -1,8 +1,9 @@
-import styles from './image-card.module.scss';
 import FavouriteIcon from '@assets/icons/favourite-icon.svg?react';
 import { useFavouritesContext } from '@modules/favourites-module';
-import toast from 'react-hot-toast';
 import type { CSSProperties, MouseEventHandler } from 'react';
+import toast from 'react-hot-toast';
+
+import styles from './image-card.module.scss';
 
 interface IImageCardProps {
     imageId: string;

@@ -1,6 +1,6 @@
 import categoryIcon from '@assets/icons/category-icon.svg';
-import imagesIcon from '@assets/icons/images-icon.svg';
 import favouritesIcon from '@assets/icons/favourites.svg';
+import imagesIcon from '@assets/icons/images-icon.svg';
 
 export interface ILinkItem {
     iconSrc: string;

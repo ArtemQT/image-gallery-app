@@ -1,7 +1,7 @@
-import TwitterImg from '@assets/icons/logo-twitter.svg?react';
 import FacebookImg from '@assets/icons/logo-facebook.svg?react';
-import InstagramImg from '@assets/icons/logo-instagram.svg?react';
 import GithubImg from '@assets/icons/logo-github.svg?react';
+import InstagramImg from '@assets/icons/logo-instagram.svg?react';
+import TwitterImg from '@assets/icons/logo-twitter.svg?react';
 
 export const socials = [
     {

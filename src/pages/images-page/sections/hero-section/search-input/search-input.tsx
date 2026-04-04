@@ -1,5 +1,6 @@
-import styles from './search-input.module.scss';
 import { useSearchContext } from '@modules/images-module';
+
+import styles from './search-input.module.scss';
 
 export const SearchInput = () => {
     const { searchQuery, updateSearchQuery } = useSearchContext();

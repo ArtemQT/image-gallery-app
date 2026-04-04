@@ -1,7 +1,8 @@
-import styles from './pagination.module.scss';
-import { useImages, useSearchContext } from '@modules/images-module';
 import PaginationNextIcon from '@assets/icons/pagination-next-icon.svg?react';
 import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
+import { useImages, useSearchContext } from '@modules/images-module';
+
+import styles from './pagination.module.scss';
 
 const getPaginationList = (page: number, totalPages: number | undefined) => {
     if (totalPages) {

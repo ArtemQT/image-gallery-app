@@ -1,5 +1,6 @@
-import styles from './error-fallback.module.scss';
 import { useNavigate } from 'react-router-dom';
+
+import styles from './error-fallback.module.scss';
 
 interface IFallbackProps {
     error: Error | null;

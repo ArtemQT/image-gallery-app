@@ -1,6 +1,7 @@
-import styles from './category-item.module.scss';
-import { Link } from 'react-router-dom';
 import type { FC } from 'react';
+import { Link } from 'react-router-dom';
+
+import styles from './category-item.module.scss';
 
 interface ICategoryItemProps {
     categoryTitle: string;

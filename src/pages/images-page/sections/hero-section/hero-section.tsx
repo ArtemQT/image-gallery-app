@@ -1,5 +1,6 @@
-import styles from './hero-section.module.scss';
 import { SearchInput } from '@pages/images-page/sections/hero-section/search-input/search-input.tsx';
+
+import styles from './hero-section.module.scss';
 
 export const HeroSection = () => {
     return (

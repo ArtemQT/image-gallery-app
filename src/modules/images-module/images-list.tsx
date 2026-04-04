@@ -1,10 +1,11 @@
-import styles from './images-list.module.scss';
-import { useImages } from '@modules/images-module/hooks/use-images.ts';
-import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
 import { ErrorFetchContainer } from '@components/error-fetch-container/error-fetch-container.tsx';
 import { ImageCard } from '@components/image-card/image-card.tsx';
-import { useSelectedImg } from '@hooks/use-selected-img.ts';
 import { SelectedImage } from '@components/selected-image/selected-image.tsx';
+import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
+import { useSelectedImg } from '@hooks/use-selected-img.ts';
+import { useImages } from '@modules/images-module/hooks/use-images.ts';
+
+import styles from './images-list.module.scss';
 
 export const ImagesList = () => {
     const { data, isImagesLoading, imagesError, refetch } = useImages();

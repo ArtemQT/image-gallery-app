@@ -2,8 +2,8 @@ import type {
     ICategoryDTO,
     ISearchDTO,
 } from '@api/unsplash-api/unsplash-api-types.ts';
-import { mapToCategory, mapToImages } from '@api/unsplash-api/unsplash-dto.ts';
 import { unsplashApiInstance } from '@api/unsplash-api/unsplash-axios-instance.ts';
+import { mapToCategory, mapToImages } from '@api/unsplash-api/unsplash-dto.ts';
 import type { TSortType } from '@shared/constants/sort-menu-list.ts';
 
 export const unsplashApi = {

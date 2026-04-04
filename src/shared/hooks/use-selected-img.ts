@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import type { IImage } from '@api/unsplash-api/unsplash-api-types.ts';
+import { useState } from 'react';
 
 export const useSelectedImg = (imagesList: IImage[] | undefined) => {
     const [selectedImgId, setSelectedImgId] = useState<string | null>(null);

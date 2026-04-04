@@ -1,11 +1,12 @@
-import styles from './header.module.scss';
-import { Link } from 'react-router-dom';
 import logoImg from '@assets/icons/logo.svg';
-import { links } from '@shared/constants/header-links-list.ts';
-import { NavigationItem } from '@layouts/root-layout/header/components/navigation-item/navigation-item.tsx';
 import { BurgerButton } from '@layouts/root-layout/header/components/burger-menu/burger-button.tsx';
-import { useState } from 'react';
+import { NavigationItem } from '@layouts/root-layout/header/components/navigation-item/navigation-item.tsx';
 import { NavigationModal } from '@layouts/root-layout/header/components/navigation-modal/navigation-modal.tsx';
+import { links } from '@shared/constants/header-links-list.ts';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import styles from './header.module.scss';
 
 export const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);

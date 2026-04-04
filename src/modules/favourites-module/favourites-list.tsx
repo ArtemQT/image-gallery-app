@@ -1,8 +1,8 @@
-import styles from '@pages/favourites-page/favourites-page.module.scss';
 import { ImageCard } from '@components/image-card/image-card.tsx';
-import { useFavouritesContext } from '@modules/favourites-module/hooks/use-favourites-context.ts';
-import { useSelectedImg } from '@hooks/use-selected-img.ts';
 import { SelectedImage } from '@components/selected-image/selected-image.tsx';
+import { useSelectedImg } from '@hooks/use-selected-img.ts';
+import { useFavouritesContext } from '@modules/favourites-module/hooks/use-favourites-context.ts';
+import styles from '@pages/favourites-page/favourites-page.module.scss';
 
 export const FavouritesList = () => {
     const { favouritesList } = useFavouritesContext();

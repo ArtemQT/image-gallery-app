@@ -1,5 +1,5 @@
-import { Component, type ReactNode } from 'react';
 import { ErrorFallback } from '@components/error-boundary/error-fallback.tsx';
+import { Component, type ReactNode } from 'react';
 
 interface IProps {
     children: ReactNode;
