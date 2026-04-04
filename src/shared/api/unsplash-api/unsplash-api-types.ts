@@ -17,9 +17,9 @@ export interface ICategory {
 }
 
 export interface ISearchDTO {
-    total: number; // Общее количество найденных фото
-    total_pages: number; // Общее количество страниц
-    results: IImageDTO[]; // Массив самих объектов с фото
+    total: number;
+    total_pages: number;
+    results: IImageDTO[];
 }
 
 interface IImageDTO {

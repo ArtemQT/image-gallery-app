@@ -14,7 +14,6 @@ interface ISearchContext {
     updatePage: (page: number) => void;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const SearchContext = createContext<ISearchContext | null>(null);
 
 export const SearchContextProvider: FC<PropsWithChildren> = ({ children }) => {

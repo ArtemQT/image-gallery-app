@@ -13,7 +13,6 @@ interface IFavouritesContext {
     toggleFavouriteImage: (image: IImage) => void;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const FavouritesContext = createContext<IFavouritesContext | null>(null);
 
 export const FavouritesContextProvider: FC<PropsWithChildren> = ({
