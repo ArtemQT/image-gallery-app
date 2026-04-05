@@ -1,8 +1,9 @@
-import styles from './category-list.module.scss';
-import { useCategories } from '@modules/category-module/hooks/use-categories.ts';
-import { CategoryItem } from '@modules/category-module/components/category-item/category-item.tsx';
-import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
 import { ErrorFetchContainer } from '@components/error-fetch-container/error-fetch-container.tsx';
+import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
+import { CategoryItem } from '@modules/category-module/components/category-item/category-item.tsx';
+import { useCategories } from '@modules/category-module/hooks/use-categories.ts';
+
+import styles from './category-list.module.scss';
 
 export const CategoryList = () => {
     const { categories, isCategoriesLoading, isCategoriesError, refetch } =

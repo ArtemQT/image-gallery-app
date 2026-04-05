@@ -1,0 +1,66 @@
+@use '../../../styles/helpers/index' as *;
+
+.errorSection {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	padding: var(--spacing-20);
+	background-color: var(--color-light);
+}
+
+.container {
+	text-align: center;
+	max-width: rem(500);
+}
+
+.title {
+	font-size: rem(42);
+	font-weight: 700;
+	line-height: 1.2;
+	margin-bottom: rem(16);
+	color: var(--color-dark);
+
+	.accent {
+		color: var(--color-accent);
+	}
+}
+
+.description {
+	font-size: var(--font-size-18);
+	color: var(--color-dark-alt);
+	margin-bottom: rem(24);
+}
+
+.errorDetails {
+	background: #fdf2f2;
+	padding: rem(12);
+	border-radius: var(--radius-8);
+	margin-bottom: rem(32);
+	border: rem(1) solid #fecaca;
+
+	code {
+		color: #dc2626;
+		font-size: var(--font-size-14);
+	}
+}
+
+.resetButton {
+	padding: rem(14) rem(32);
+	background-color: var(--color-accent);
+	color: white;
+	border: none;
+	border-radius: var(--radius-4);
+	font-weight: 600;
+	cursor: pointer;
+	transition: transform var(--transition-duration);
+
+	@include hover {
+		transform: translateY(-2px);
+		box-shadow: 0 rem(4) rem(12) #ffa5004d;
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+}

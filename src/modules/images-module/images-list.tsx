@@ -1,44 +1,44 @@
-import styles from './images-list.module.scss';
-import { useImages } from '@modules/images-module/hooks/use-images.ts';
-import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
-import { ErrorFetchContainer } from '@components/error-fetch-container/error-fetch-container.tsx';
-import { useState } from 'react';
 import type { IImage } from '@api/unsplash-api/unsplash-api-types.ts';
-import { SelectedImage } from '@modules/images-module/components/selected-image/selected-image.tsx';
+import { ErrorFetchContainer } from '@components/error-fetch-container/error-fetch-container.tsx';
 import { ImageCard } from '@components/image-card/image-card.tsx';
+import { SelectedImage } from '@components/selected-image/selected-image.tsx';
+import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
+import { useSelectedImg } from '@hooks/use-selected-img.ts';
+import { useImages } from '@modules/images-module/hooks/use-images.ts';
+import { useCallback } from 'react';
+
+import { imagesListEmptyContent } from './images-list.content.ts';
+import styles from './images-list.module.scss';
+
+interface IImagesListItemProps {
+    image: IImage;
+    onOpen: (id: string) => void;
+}
+
+const ImagesListItem = ({ image, onOpen }: IImagesListItemProps) => {
+    const handleClick = useCallback(() => {
+        onOpen(image.id);
+    }, [image.id, onOpen]);
+
+    return (
+        <li onClick={handleClick} className={styles.imagesListItem}>
+            <ImageCard
+                imageId={image.id}
+                imageDescription={image.description}
+                imageUrl={image.imageUrl}
+            />
+        </li>
+    );
+};
 
 export const ImagesList = () => {
     const { data, isImagesLoading, imagesError, refetch } = useImages();
-    const [selectedCard, setSelectedCard] = useState<IImage | null>(null);
-
-    const handleCloseSelectedCard = () => setSelectedCard(null);
-    const handleChangeSelectedCard = (buttonType: 'prev' | 'next') => {
-        if (selectedCard && data) {
-            const imageIndex = data.imagesList.indexOf(selectedCard);
-            if (imageIndex !== -1) {
-                switch (buttonType) {
-                    case 'prev': {
-                        if (imageIndex === 0) {
-                            setSelectedCard(
-                                data.imagesList[data.imagesList.length - 1],
-                            );
-                        } else {
-                            setSelectedCard(data.imagesList[imageIndex - 1]);
-                        }
-                        break;
-                    }
-                    case 'next': {
-                        if (imageIndex === data.imagesList.length - 1) {
-                            setSelectedCard(data.imagesList[0]);
-                        } else {
-                            setSelectedCard(data.imagesList[imageIndex + 1]);
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-    };
+    const {
+        selectedImg,
+        handleChangeSelectedImg,
+        handleOpenSelectedImg,
+        handleCloseSelectedImg,
+    } = useSelectedImg(data?.imagesList);
 
     if (isImagesLoading) {
         return (
@@ -57,11 +57,23 @@ export const ImagesList = () => {
     }
 
     if (data?.totalImages === 0) {
+        const {
+            firstLine,
+            secondLine,
+            thirdLineBeforeAccent,
+            thirdLineAccent,
+            thirdLineAfterAccent,
+        } = imagesListEmptyContent;
+
         return (
             <p className={styles.emptyImagesListDescription}>
-                The search didn't <br />
-                yield any results, <br />
-                please try <span className={styles.accent}>again</span>.
+                {firstLine}
+                <br />
+                {secondLine}
+                <br />
+                {thirdLineBeforeAccent}
+                <span className={styles.accent}>{thirdLineAccent}</span>
+                {thirdLineAfterAccent}
             </p>
         );
     }
@@ -72,28 +84,22 @@ export const ImagesList = () => {
         <>
             <ul className={styles.imagesList}>
                 {imagesList?.map((image) => (
-                    <li
+                    <ImagesListItem
                         key={image.id}
-                        onClick={() => setSelectedCard(image)}
-                        className={styles.imagesListItem}
-                    >
-                        <ImageCard
-                            imageId={image.id}
-                            imageDescription={image.description}
-                            imageUrl={image.imageUrl}
-                        />
-                    </li>
+                        image={image}
+                        onOpen={handleOpenSelectedImg}
+                    />
                 ))}
             </ul>
-            {selectedCard && (
+            {selectedImg && (
                 <SelectedImage
-                    handleCloseSelectedCard={handleCloseSelectedCard}
-                    handleChangeSelectedCard={handleChangeSelectedCard}
+                    handleCloseSelectedImg={handleCloseSelectedImg}
+                    handleChangeSelectedImg={handleChangeSelectedImg}
                 >
                     <ImageCard
-                        imageId={selectedCard.id}
-                        imageDescription={selectedCard.description}
-                        imageUrl={selectedCard.imageUrl}
+                        imageId={selectedImg.id}
+                        imageDescription={selectedImg.description}
+                        imageUrl={selectedImg.imageUrl}
                         isSelected={true}
                     />
                 </SelectedImage>

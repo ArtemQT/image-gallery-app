@@ -1,9 +1,12 @@
 import type { IImage } from '@api/unsplash-api/unsplash-api-types.ts';
+import { SessionStorage } from '@shared/lib/session-storage.ts';
 import {
     createContext,
     type FC,
     type PropsWithChildren,
+    useCallback,
     useEffect,
+    useMemo,
     useState,
 } from 'react';
 
@@ -13,43 +16,54 @@ interface IFavouritesContext {
     toggleFavouriteImage: (image: IImage) => void;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const FavouritesContext = createContext<IFavouritesContext | null>(null);
 
 export const FavouritesContextProvider: FC<PropsWithChildren> = ({
     children,
 }) => {
+    const sessionStorageKey = 'favouritesList';
+
     const [favouritesList, setFavouritesList] = useState<IImage[]>(() => {
-        const savedList = localStorage.getItem('favouritesList');
-        return savedList ? JSON.parse(savedList) : [];
+        const savedList = SessionStorage.get<IImage[]>(sessionStorageKey);
+        return savedList ? savedList : [];
     });
 
     useEffect(() => {
-        localStorage.setItem('favouritesList', JSON.stringify(favouritesList));
+        SessionStorage.set(sessionStorageKey, favouritesList);
     }, [favouritesList]);
 
-    const isFavourite = (imageId: string) => {
-        return favouritesList.some((imgItem) => imgItem.id === imageId);
-    };
-    const toggleFavouriteImage = (targetImg: IImage) => {
-        const isExist = favouritesList.some(
-            (imgItem) => imgItem.id === targetImg.id,
-        );
-        if (isExist) {
-            const newFavouritesList = favouritesList.filter(
-                (imgItem) => imgItem.id !== targetImg.id,
-            );
-            setFavouritesList(newFavouritesList);
-        } else {
-            setFavouritesList([...favouritesList, targetImg]);
-        }
-    };
+    const isFavourite = useCallback(
+        (imageId: string) => {
+            return favouritesList.some((imgItem) => imgItem.id === imageId);
+        },
+        [favouritesList],
+    );
 
-    const contextValue: IFavouritesContext = {
-        favouritesList,
-        isFavourite,
-        toggleFavouriteImage,
-    };
+    const toggleFavouriteImage = useCallback(
+        (targetImg: IImage) => {
+            const isExist = favouritesList.some(
+                (imgItem) => imgItem.id === targetImg.id,
+            );
+            if (isExist) {
+                const newFavouritesList = favouritesList.filter(
+                    (imgItem) => imgItem.id !== targetImg.id,
+                );
+                setFavouritesList(newFavouritesList);
+            } else {
+                setFavouritesList([...favouritesList, targetImg]);
+            }
+        },
+        [favouritesList],
+    );
+
+    const contextValue = useMemo<IFavouritesContext>(
+        () => ({
+            favouritesList,
+            isFavourite,
+            toggleFavouriteImage,
+        }),
+        [favouritesList, isFavourite, toggleFavouriteImage],
+    );
 
     return (
         <FavouritesContext.Provider value={contextValue}>

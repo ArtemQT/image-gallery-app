@@ -1,3 +1,5 @@
+@use "helpers" as *;
+
 :root {
 	--color-light: #FFFFFF;
 	--color-dark: #000000;
@@ -5,21 +7,39 @@
 	--color-accent: #E0A34A;
 	--color-accent-light: #F27800;
 	--color-grey: #a8a8a8;
-	--color-grey-light: #EEEEEE  ;
+	--color-grey-light: #EEEEEE;
 
 	--font-family-base: "Roboto", sans-serif;
 	--font-family-secondary: "Lexend Deca", sans-serif;
 	--font-family-montserrat: "Montserrat", sans-serif;
 	--font-family-404-page: "Signika", sans-serif;
 
+	--font-size-14: #{rem(14)};
+	--font-size-16: #{rem(16)};
+	--font-size-18: #{rem(18)};
+	--font-size-20: #{rem(20)};
+	--font-size-32: #{rem(32)};
+	--font-size-48: #{rem(48)};
+	--font-size-64: #{rem(64)};
+
+	--spacing-20: #{rem(20)};
+	--spacing-26: #{rem(26)};
+
+	--radius-4: #{rem(4)};
+	--radius-8: #{rem(8)};
+	--radius-10: #{rem(10)};
+	--radius-round: 50%;
+
+	--border-control: #{rem(1)} solid #c4c4c4;
+
 	--footer-container-width: 1250px;
-	--footer-padding-inline: 20px;
+	--footer-padding-inline: var(--spacing-20);
 
 	--header-container-width: 1150px;
 	--header-padding-inline: 15px;
 
 	--gallery-container-width: 910px;
-	--gallery-padding-inline: 20px;
+	--gallery-padding-inline: var(--spacing-20);
 
 	--layout-bg-gradient: linear-gradient(90deg, #343333 16.73%, #484848 58.63%, #282828 98.63%);
 

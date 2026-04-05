@@ -10,7 +10,7 @@
 			text-align: center;
 			color: var(--color-dark-alt);
 			font-weight: 400;
-			font-size: rem(32);
+			font-size: var(--font-size-32);
 			margin-bottom: rem(65);
 
 			@include mobile {
@@ -23,7 +23,7 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: rem(26);
-		margin-bottom: rem(26);
+		margin-bottom: var(--spacing-26);
 
 		@include tablet {
 			grid-template-columns: repeat(2, 1fr);
@@ -50,7 +50,7 @@
 	&Title {
 		font-family: var(--font-family-secondary);
 		font-weight: 700;
-		font-size: rem(64);
+		font-size: var(--font-size-64);
 		text-transform: capitalize;
 		text-align: center;
 		color: var(--color-dark-alt);
@@ -60,7 +60,7 @@
 		}
 
 		@include mobile {
-			font-size: rem(32);
+			font-size: var(--font-size-32);
 		}
 	}
 }

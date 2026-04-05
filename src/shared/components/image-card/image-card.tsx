@@ -1,8 +1,10 @@
-import styles from './image-card.module.scss';
 import FavouriteIcon from '@assets/icons/favourite-icon.svg?react';
 import { useFavouritesContext } from '@modules/favourites-module';
+import { type CSSProperties, type MouseEventHandler, useCallback } from 'react';
 import toast from 'react-hot-toast';
-import type { CSSProperties, MouseEventHandler } from 'react';
+
+import { imageCardToastMessages } from './image-card.content.ts';
+import styles from './image-card.module.scss';
 
 interface IImageCardProps {
     imageId: string;
@@ -19,33 +21,44 @@ export const ImageCard = ({
 }: IImageCardProps) => {
     const { toggleFavouriteImage, isFavourite } = useFavouritesContext();
 
-    const handleToggleFavouriteImage: MouseEventHandler<HTMLButtonElement> = (
-        e,
-    ) => {
-        e.stopPropagation();
+    const handleToggleFavouriteImage: MouseEventHandler<HTMLButtonElement> =
+        useCallback(
+            (e) => {
+                e.stopPropagation();
 
-        toggleFavouriteImage({
-            id: imageId,
-            imageUrl,
-            description: imageDescription,
-        });
+                toggleFavouriteImage({
+                    id: imageId,
+                    imageUrl,
+                    description: imageDescription,
+                });
 
-        const styleObj: CSSProperties = {
-            fontSize: '14px',
-            padding: '12px 20px',
-            borderRadius: '8px',
-            width: '250px',
-        };
-        if (!isFavourite(imageId)) {
-            toast.success('Added to favorites', {
-                style: styleObj,
-            });
-        } else {
-            toast.success('Removed from favourites', {
-                style: styleObj,
-            });
-        }
-    };
+                const styleObj: CSSProperties = {
+                    fontSize: '14px',
+                    padding: '12px 20px',
+                    borderRadius: '8px',
+                    width: '250px',
+                };
+                if (!isFavourite(imageId)) {
+                    toast.success(imageCardToastMessages.addedToFavorites, {
+                        style: styleObj,
+                    });
+                } else {
+                    toast.success(
+                        imageCardToastMessages.removedFromFavourites,
+                        {
+                            style: styleObj,
+                        },
+                    );
+                }
+            },
+            [
+                toggleFavouriteImage,
+                isFavourite,
+                imageId,
+                imageUrl,
+                imageDescription,
+            ],
+        );
 
     return (
         <article className={styles.imageArticle}>
@@ -64,6 +77,7 @@ export const ImageCard = ({
                         {imageDescription}
                     </span>
                     <button
+                        type="button"
                         className={styles.imageToggleFavoriteButton}
                         data-is-favourite-image={isFavourite(imageId)}
                         onClick={handleToggleFavouriteImage}

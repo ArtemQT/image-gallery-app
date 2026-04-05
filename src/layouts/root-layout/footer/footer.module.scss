@@ -45,8 +45,8 @@
 
 	&Copyright {
 		font-weight: 400;
-		font-size: 16px;
-		color: rgba(255, 255, 255, 0.6);
+		font-size: var(--font-size-16);
+		color: #ffffff99;
 
 		@include mobile-s {
 			text-align: center;
@@ -78,8 +78,8 @@
 .companyDescription {
 	width: rem(248);
 	font-weight: 400;
-	font-size: rem(16);
-	color: rgba(255, 255, 255, 0.6);
+	font-size: var(--font-size-16);
+	color: #ffffff99;
 	line-height: 157%;
 }
 
@@ -93,7 +93,7 @@
 	&Item {
 		width: rem(30);
 		height: rem(30);
-		border-radius: 50%;
+		border-radius: var(--radius-round);
 		background-color: var(--color-light);
 
 		transition-duration: var(--transition-duration);

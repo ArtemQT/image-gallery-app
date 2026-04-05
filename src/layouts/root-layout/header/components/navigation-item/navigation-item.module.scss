@@ -31,7 +31,7 @@
 			}
 
 			@include tablet {
-				font-size: rem(18);
+				font-size: var(--font-size-18);
 			}
 		}
 	}

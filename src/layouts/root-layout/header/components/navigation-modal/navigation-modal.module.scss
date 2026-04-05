@@ -54,7 +54,7 @@
 		width: 100%;
 		height: rem(3);
 		background-color: var(--color-accent);
-		border-radius: rem(10);
+		border-radius: var(--radius-10);
 
 		transition-duration: var(--transition-duration);
 	}

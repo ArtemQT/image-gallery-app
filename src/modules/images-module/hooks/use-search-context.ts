@@ -1,5 +1,5 @@
-import { useContext } from 'react';
 import { SearchContext } from '@modules/images-module/contexts/search-context.tsx';
+import { useContext } from 'react';
 
 export const useSearchContext = () => {
     const context = useContext(SearchContext);

@@ -1,7 +1,7 @@
-import type { TSortType } from '@shared/utils/sort-menu-list.ts';
-import { createContext, useState } from 'react';
-import type { FC, PropsWithChildren } from 'react';
 import { useDebounce } from '@hooks/use-debounce.ts';
+import type { TSortType } from '@shared/constants/sort-menu-list.ts';
+import type { FC, PropsWithChildren } from 'react';
+import { createContext, useCallback, useMemo, useState } from 'react';
 
 interface ISearchContext {
     page: number;
@@ -14,7 +14,6 @@ interface ISearchContext {
     updatePage: (page: number) => void;
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const SearchContext = createContext<ISearchContext | null>(null);
 
 export const SearchContextProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -24,27 +23,40 @@ export const SearchContextProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const debouncedSearchQuery = useDebounce(searchQuery, 400);
 
-    const updateSearchQuery = (searchQuery: string) => {
-        setSearchQuery(searchQuery);
+    const updateSearchQuery = useCallback((nextSearchQuery: string) => {
+        setSearchQuery(nextSearchQuery);
         setPage(1);
-    };
-    const updateSortType = (sortType: TSortType) => {
-        setSortType(sortType);
-        setPage(1);
-    };
-    const updatePage = (page: number) => {
-        setPage(page);
-    };
+    }, []);
 
-    const contextValue: ISearchContext = {
-        page,
-        searchQuery,
-        debouncedSearchQuery,
-        sortType,
-        updateSearchQuery,
-        updateSortType,
-        updatePage,
-    };
+    const updateSortType = useCallback((nextSortType: TSortType) => {
+        setSortType(nextSortType);
+        setPage(1);
+    }, []);
+
+    const updatePage = useCallback((nextPage: number) => {
+        setPage(nextPage);
+    }, []);
+
+    const contextValue = useMemo<ISearchContext>(
+        () => ({
+            page,
+            searchQuery,
+            debouncedSearchQuery,
+            sortType,
+            updateSearchQuery,
+            updateSortType,
+            updatePage,
+        }),
+        [
+            page,
+            searchQuery,
+            debouncedSearchQuery,
+            sortType,
+            updateSearchQuery,
+            updateSortType,
+            updatePage,
+        ],
+    );
 
     return (
         <SearchContext.Provider value={contextValue}>

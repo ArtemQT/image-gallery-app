@@ -2,9 +2,9 @@ import type {
     ICategoryDTO,
     ISearchDTO,
 } from '@api/unsplash-api/unsplash-api-types.ts';
-import { mapToCategory, mapToImages } from '@api/unsplash-api/unsplash-dto.ts';
 import { unsplashApiInstance } from '@api/unsplash-api/unsplash-axios-instance.ts';
-import type { TSortType } from '@shared/utils/sort-menu-list.ts';
+import { mapToCategory, mapToImages } from '@api/unsplash-api/unsplash-dto.ts';
+import type { TSortType } from '@shared/constants/sort-menu-list.ts';
 
 export const unsplashApi = {
     async getCategories() {
@@ -20,17 +20,12 @@ export const unsplashApi = {
         return response.data.map(mapToCategory);
     },
 
-    async getImages(
-        categoryName: string = 'featured',
-        searchQuery: string = '',
-        pageNumber: number = 1,
-        orderBy: TSortType,
-    ) {
+    async getImages(query: string, pageNumber: number, orderBy: TSortType) {
         const response = await unsplashApiInstance.get<ISearchDTO>(
             '/search/photos',
             {
                 params: {
-                    query: `${categoryName} ${searchQuery}`,
+                    query: query,
                     order_by: orderBy,
                     page: pageNumber,
                     per_page: 12,

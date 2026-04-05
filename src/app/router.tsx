@@ -1,9 +1,9 @@
-import { createBrowserRouter } from 'react-router-dom';
 import { RootLayout } from '@layouts/root-layout/root-layout.tsx';
 import { CategoryPage } from '@pages/category-page/category-page.tsx';
-import { ImagesPage } from '@pages/images-page/images-page.tsx';
 import { FavouritesPage } from '@pages/favourites-page/favourites-page.tsx';
+import { ImagesPage } from '@pages/images-page/images-page.tsx';
 import { NotFoundPage } from '@pages/not-found-page/not-found-page.tsx';
+import { createBrowserRouter } from 'react-router-dom';
 
 export const router = createBrowserRouter(
     [
@@ -39,6 +39,6 @@ export const router = createBrowserRouter(
         },
     ],
     {
-        basename: '/modsen-gallery',
+        basename: '/modsen-gallery/',
     },
 );
