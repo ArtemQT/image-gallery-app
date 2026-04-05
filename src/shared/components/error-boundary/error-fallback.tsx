@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { errorBoundaryContent } from './error-fallback.content.ts';
@@ -19,10 +20,10 @@ export const ErrorFallback = ({
             ? error.message
             : errorBoundaryContent.unknownError;
 
-    const handleReset = () => {
+    const handleReset = useCallback(() => {
         navigate('/', { replace: true });
         resetErrorBoundary();
-    };
+    }, [navigate, resetErrorBoundary]);
 
     return (
         <section className={styles.errorSection}>
@@ -41,7 +42,11 @@ export const ErrorFallback = ({
                     <code>{errorMessage}</code>
                 </div>
 
-                <button className={styles.resetButton} onClick={handleReset}>
+                <button
+                    type="button"
+                    className={styles.resetButton}
+                    onClick={handleReset}
+                >
                     {errorBoundaryContent.tryAgain}
                 </button>
             </div>

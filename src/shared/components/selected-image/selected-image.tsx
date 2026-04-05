@@ -1,8 +1,17 @@
 import { useLockScroll } from '@hooks/use-lock-scroll.ts';
-import { type ReactNode, useEffect } from 'react';
+import {
+    type MouseEventHandler,
+    type ReactNode,
+    useCallback,
+    useEffect,
+} from 'react';
 import { createPortal } from 'react-dom';
 
 import styles from './selected-image.module.scss';
+
+const handleModalInnerClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    e.stopPropagation();
+};
 
 interface ISelectedImageProps {
     children: ReactNode;
@@ -16,6 +25,14 @@ export const SelectedImage = ({
     handleChangeSelectedImg,
 }: ISelectedImageProps) => {
     useLockScroll();
+
+    const handlePrev = useCallback(() => {
+        handleChangeSelectedImg('prev');
+    }, [handleChangeSelectedImg]);
+
+    const handleNext = useCallback(() => {
+        handleChangeSelectedImg('next');
+    }, [handleChangeSelectedImg]);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -40,26 +57,26 @@ export const SelectedImage = ({
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [handleChangeSelectedImg]);
+    }, [handleChangeSelectedImg, handleCloseSelectedImg]);
 
     return createPortal(
         <div className={styles.modal} onClick={handleCloseSelectedImg}>
-            <div
-                className={styles.modalInner}
-                onClick={(e) => e.stopPropagation()}
-            >
+            <div className={styles.modalInner} onClick={handleModalInnerClick}>
                 <button
+                    type="button"
                     className={styles.closeModalButton}
                     onClick={handleCloseSelectedImg}
                 ></button>
                 <div className={styles.selectedCard}>{children}</div>
                 <button
+                    type="button"
                     className={styles.cardButtonPrev}
-                    onClick={() => handleChangeSelectedImg('prev')}
+                    onClick={handlePrev}
                 ></button>
                 <button
+                    type="button"
                     className={styles.cardButtonNext}
-                    onClick={() => handleChangeSelectedImg('next')}
+                    onClick={handleNext}
                 ></button>
             </div>
         </div>,

@@ -1,6 +1,7 @@
 import PaginationNextIcon from '@assets/icons/pagination-next-icon.svg?react';
 import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
 import { useImages, useSearchContext } from '@modules/images-module';
+import { useCallback } from 'react';
 
 import styles from './pagination.module.scss';
 
@@ -20,6 +21,34 @@ const getPaginationList = (page: number, totalPages: number | undefined) => {
     }
 };
 
+interface IPaginationNumberButtonProps {
+    pageNumber: number;
+    isActive: boolean;
+    onSelect: (pageNumber: number) => void;
+}
+
+const PaginationNumberButton = ({
+    pageNumber,
+    isActive,
+    onSelect,
+}: IPaginationNumberButtonProps) => {
+    const handleClick = useCallback(() => {
+        onSelect(pageNumber);
+    }, [pageNumber, onSelect]);
+
+    return (
+        <li className={styles.paginationItem} data-is-active-page={isActive}>
+            <button
+                type="button"
+                className={styles.paginationButton}
+                onClick={handleClick}
+            >
+                {pageNumber}
+            </button>
+        </li>
+    );
+};
+
 export const Pagination = () => {
     const { page, updatePage } = useSearchContext();
     const { data, isImagesLoading } = useImages();
@@ -28,15 +57,23 @@ export const Pagination = () => {
 
     const paginationList = getPaginationList(page, totalPages);
 
-    const handleNextPage = (page: number) => {
+    const handleSelectPage = useCallback(
+        (nextPage: number) => {
+            updatePage(nextPage);
+        },
+        [updatePage],
+    );
+
+    const handleNextPage = useCallback(() => {
+        const targetPage = page + 1;
         if (totalPages) {
-            if (page > totalPages) {
+            if (targetPage > totalPages) {
                 updatePage(1);
             } else {
-                updatePage(page);
+                updatePage(targetPage);
             }
         }
-    };
+    }, [page, totalPages, updatePage]);
 
     if (isImagesLoading) {
         return (
@@ -59,23 +96,18 @@ export const Pagination = () => {
         >
             <ul className={styles.paginationList}>
                 {paginationList?.map((pageNumber) => (
-                    <li
+                    <PaginationNumberButton
                         key={pageNumber}
-                        className={styles.paginationItem}
-                        data-is-active-page={page === pageNumber}
-                    >
-                        <button
-                            className={styles.paginationButton}
-                            onClick={() => updatePage(pageNumber)}
-                        >
-                            {pageNumber}
-                        </button>
-                    </li>
+                        pageNumber={pageNumber}
+                        isActive={page === pageNumber}
+                        onSelect={handleSelectPage}
+                    />
                 ))}
             </ul>
             <button
+                type="button"
                 className={styles.paginationNextButton}
-                onClick={() => handleNextPage(page + 1)}
+                onClick={handleNextPage}
             >
                 <PaginationNextIcon />
             </button>

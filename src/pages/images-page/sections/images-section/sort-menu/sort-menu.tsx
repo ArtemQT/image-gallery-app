@@ -1,15 +1,49 @@
 import { useImages, useSearchContext } from '@modules/images-module';
-import { sortOptionsList } from '@shared/constants/sort-menu-list.ts';
-import { useState } from 'react';
+import {
+    sortOptionsList,
+    type TSortType,
+} from '@shared/constants/sort-menu-list.ts';
+import { useCallback, useState } from 'react';
 
 import { sortMenuContent } from './sort-menu.content.ts';
 import styles from './sort-menu.module.scss';
+
+interface ISortMenuOptionProps {
+    option: TSortType;
+    onSelect: (option: TSortType) => void;
+}
+
+const SortMenuOption = ({ option, onSelect }: ISortMenuOptionProps) => {
+    const handleClick = useCallback(() => {
+        onSelect(option);
+    }, [option, onSelect]);
+
+    return (
+        <li className={styles.sortMenuItem}>
+            <button type="button" onClick={handleClick}>
+                {option}
+            </button>
+        </li>
+    );
+};
 
 export const SortMenu = () => {
     const { sortType, updateSortType } = useSearchContext();
     const { data } = useImages();
 
     const [isOpenSortMenu, setIsOpenSortMenu] = useState(false);
+
+    const handleToggleOpen = useCallback(() => {
+        setIsOpenSortMenu((open) => !open);
+    }, []);
+
+    const handleSelectOption = useCallback(
+        (option: TSortType) => {
+            setIsOpenSortMenu(false);
+            updateSortType(option);
+        },
+        [updateSortType],
+    );
 
     return (
         <div
@@ -19,8 +53,9 @@ export const SortMenu = () => {
             <span>{sortMenuContent.label}</span>
             <div className={styles.sortMenu}>
                 <button
+                    type="button"
                     className={styles.selectedButton}
-                    onClick={() => setIsOpenSortMenu(!isOpenSortMenu)}
+                    onClick={handleToggleOpen}
                     data-is-active-sort-menu={isOpenSortMenu}
                 >
                     {sortType}
@@ -30,16 +65,11 @@ export const SortMenu = () => {
                     data-is-active-sort-menu={isOpenSortMenu}
                 >
                     {sortOptionsList.map((option) => (
-                        <li className={styles.sortMenuItem} key={option}>
-                            <button
-                                onClick={() => {
-                                    setIsOpenSortMenu(false);
-                                    updateSortType(option);
-                                }}
-                            >
-                                {option}
-                            </button>
-                        </li>
+                        <SortMenuOption
+                            key={option}
+                            option={option}
+                            onSelect={handleSelectOption}
+                        />
                     ))}
                 </ul>
             </div>

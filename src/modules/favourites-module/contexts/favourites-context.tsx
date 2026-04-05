@@ -4,7 +4,9 @@ import {
     createContext,
     type FC,
     type PropsWithChildren,
+    useCallback,
     useEffect,
+    useMemo,
     useState,
 } from 'react';
 
@@ -30,28 +32,38 @@ export const FavouritesContextProvider: FC<PropsWithChildren> = ({
         SessionStorage.set(sessionStorageKey, favouritesList);
     }, [favouritesList]);
 
-    const isFavourite = (imageId: string) => {
-        return favouritesList.some((imgItem) => imgItem.id === imageId);
-    };
-    const toggleFavouriteImage = (targetImg: IImage) => {
-        const isExist = favouritesList.some(
-            (imgItem) => imgItem.id === targetImg.id,
-        );
-        if (isExist) {
-            const newFavouritesList = favouritesList.filter(
-                (imgItem) => imgItem.id !== targetImg.id,
-            );
-            setFavouritesList(newFavouritesList);
-        } else {
-            setFavouritesList([...favouritesList, targetImg]);
-        }
-    };
+    const isFavourite = useCallback(
+        (imageId: string) => {
+            return favouritesList.some((imgItem) => imgItem.id === imageId);
+        },
+        [favouritesList],
+    );
 
-    const contextValue: IFavouritesContext = {
-        favouritesList,
-        isFavourite,
-        toggleFavouriteImage,
-    };
+    const toggleFavouriteImage = useCallback(
+        (targetImg: IImage) => {
+            const isExist = favouritesList.some(
+                (imgItem) => imgItem.id === targetImg.id,
+            );
+            if (isExist) {
+                const newFavouritesList = favouritesList.filter(
+                    (imgItem) => imgItem.id !== targetImg.id,
+                );
+                setFavouritesList(newFavouritesList);
+            } else {
+                setFavouritesList([...favouritesList, targetImg]);
+            }
+        },
+        [favouritesList],
+    );
+
+    const contextValue = useMemo<IFavouritesContext>(
+        () => ({
+            favouritesList,
+            isFavourite,
+            toggleFavouriteImage,
+        }),
+        [favouritesList, isFavourite, toggleFavouriteImage],
+    );
 
     return (
         <FavouritesContext.Provider value={contextValue}>
