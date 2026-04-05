@@ -5,6 +5,7 @@ import { SkeletonItem } from '@components/skeleton-item/skeleton-item.tsx';
 import { useSelectedImg } from '@hooks/use-selected-img.ts';
 import { useImages } from '@modules/images-module/hooks/use-images.ts';
 
+import { imagesListEmptyContent } from './images-list.content.ts';
 import styles from './images-list.module.scss';
 
 export const ImagesList = () => {
@@ -33,11 +34,23 @@ export const ImagesList = () => {
     }
 
     if (data?.totalImages === 0) {
+        const {
+            firstLine,
+            secondLine,
+            thirdLineBeforeAccent,
+            thirdLineAccent,
+            thirdLineAfterAccent,
+        } = imagesListEmptyContent;
+
         return (
             <p className={styles.emptyImagesListDescription}>
-                The search didn't <br />
-                yield any results, <br />
-                please try <span className={styles.accent}>again</span>.
+                {firstLine}
+                <br />
+                {secondLine}
+                <br />
+                {thirdLineBeforeAccent}
+                <span className={styles.accent}>{thirdLineAccent}</span>
+                {thirdLineAfterAccent}
             </p>
         );
     }

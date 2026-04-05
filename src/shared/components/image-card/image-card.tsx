@@ -3,6 +3,7 @@ import { useFavouritesContext } from '@modules/favourites-module';
 import type { CSSProperties, MouseEventHandler } from 'react';
 import toast from 'react-hot-toast';
 
+import { imageCardToastMessages } from './image-card.content.ts';
 import styles from './image-card.module.scss';
 
 interface IImageCardProps {
@@ -38,11 +39,11 @@ export const ImageCard = ({
             width: '250px',
         };
         if (!isFavourite(imageId)) {
-            toast.success('Added to favorites', {
+            toast.success(imageCardToastMessages.addedToFavorites, {
                 style: styleObj,
             });
         } else {
-            toast.success('Removed from favourites', {
+            toast.success(imageCardToastMessages.removedFromFavourites, {
                 style: styleObj,
             });
         }

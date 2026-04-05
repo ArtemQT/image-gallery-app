@@ -2,6 +2,7 @@ import { useImages, useSearchContext } from '@modules/images-module';
 import { sortOptionsList } from '@shared/constants/sort-menu-list.ts';
 import { useState } from 'react';
 
+import { sortMenuContent } from './sort-menu.content.ts';
 import styles from './sort-menu.module.scss';
 
 export const SortMenu = () => {
@@ -15,7 +16,7 @@ export const SortMenu = () => {
             className={styles.wrapper}
             data-is-empty-search={!!data?.totalImages}
         >
-            <span>Sort by</span>
+            <span>{sortMenuContent.label}</span>
             <div className={styles.sortMenu}>
                 <button
                     className={styles.selectedButton}

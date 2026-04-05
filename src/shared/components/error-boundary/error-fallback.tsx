@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
+import { errorBoundaryContent } from './error-fallback.content.ts';
 import styles from './error-fallback.module.scss';
 
 interface IFallbackProps {
@@ -14,7 +15,9 @@ export const ErrorFallback = ({
     const navigate = useNavigate();
 
     const errorMessage =
-        error instanceof Error ? error.message : 'Unknown error';
+        error instanceof Error
+            ? error.message
+            : errorBoundaryContent.unknownError;
 
     const handleReset = () => {
         navigate('/', { replace: true });
@@ -25,11 +28,13 @@ export const ErrorFallback = ({
         <section className={styles.errorSection}>
             <div className={styles.container}>
                 <h1 className={styles.title}>
-                    Oops! Something{' '}
-                    <span className={styles.accent}>went wrong</span>
+                    {errorBoundaryContent.titleBeforeAccent}
+                    <span className={styles.accent}>
+                        {errorBoundaryContent.titleAccent}
+                    </span>
                 </h1>
                 <p className={styles.description}>
-                    A technical error occurred. Don't worry, your data is safe.
+                    {errorBoundaryContent.description}
                 </p>
 
                 <div className={styles.errorDetails}>
@@ -37,7 +42,7 @@ export const ErrorFallback = ({
                 </div>
 
                 <button className={styles.resetButton} onClick={handleReset}>
-                    Try again
+                    {errorBoundaryContent.tryAgain}
                 </button>
             </div>
         </section>

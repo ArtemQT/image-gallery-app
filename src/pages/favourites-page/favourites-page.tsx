@@ -3,6 +3,10 @@ import {
     useFavouritesContext,
 } from '@modules/favourites-module';
 
+import {
+    favouritesEmptyStateContent,
+    favouritesFilledHeaderContent,
+} from './favourites-page.content.ts';
 import styles from './favourites-page.module.scss';
 
 export const FavouritesPage = () => {
@@ -10,23 +14,34 @@ export const FavouritesPage = () => {
 
     const isEmptyFavouritesList = favouritesList.length === 0;
     if (isEmptyFavouritesList) {
+        const {
+            titleBeforeHighlight,
+            titleHighlight,
+            titleAfterHighlight,
+            emptySecondLine,
+        } = favouritesEmptyStateContent;
+
         return (
             <section className={styles.emptySection}>
                 <h2 className={styles.emptySectionTitle}>
-                    Your <span>favorites</span> list
+                    {titleBeforeHighlight}
+                    <span>{titleHighlight}</span>
+                    {titleAfterHighlight}
                     <br />
-                    is empty
+                    {emptySecondLine}
                 </h2>
             </section>
         );
     }
 
+    const { accentLine, secondLine } = favouritesFilledHeaderContent;
+
     return (
         <section className={styles.favouritesSection}>
             <h2 className={styles.favouritesSectionTitle}>
-                <span className={styles.accent}>Saved by you</span>
+                <span className={styles.accent}>{accentLine}</span>
                 <br />
-                Your favorites list
+                {secondLine}
             </h2>
             <div className="content-container">
                 <FavouritesList />

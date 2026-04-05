@@ -1,3 +1,4 @@
+import { errorFetchContent } from './error-fetch-container.content.ts';
 import styles from './error-fetch-container.module.scss';
 
 interface IErrorFetchContainerProps {
@@ -7,8 +8,10 @@ interface IErrorFetchContainerProps {
 export const ErrorFetchContainer = ({ refetch }: IErrorFetchContainerProps) => {
     return (
         <div className={styles.errorContainer}>
-            <p>Failed to load resource</p>
-            <button onClick={() => refetch()}>Try again</button>
+            <p>{errorFetchContent.message}</p>
+            <button onClick={() => refetch()}>
+                {errorFetchContent.tryAgain}
+            </button>
         </div>
     );
 };
