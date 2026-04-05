@@ -2,9 +2,16 @@ import logoImg from '@assets/icons/logo.svg';
 import { FooterColumn } from '@layouts/root-layout/footer/components/footer-column/footer-column.tsx';
 import { footerColumns } from '@shared/constants/footer-columns-list.ts';
 import { socials } from '@shared/constants/footer-socials-list.ts';
+import type { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './footer.module.scss';
+
+const handleInactiveLinkClick: MouseEventHandler<HTMLAnchorElement> = (
+    event,
+) => {
+    event.preventDefault();
+};
 
 export const Footer = () => {
     return (
@@ -30,7 +37,11 @@ export const Footer = () => {
                         <ul className={styles.socialsList}>
                             {socials.map(({ ComponentImg, id }) => (
                                 <li className={styles.socialsItem} key={id}>
-                                    <a href="/" target="_blank">
+                                    <a
+                                        href="#!"
+                                        aria-label={id}
+                                        onClick={handleInactiveLinkClick}
+                                    >
                                         <ComponentImg
                                             className={styles.socialsImg}
                                         />
