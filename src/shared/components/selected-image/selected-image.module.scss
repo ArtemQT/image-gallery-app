@@ -73,7 +73,7 @@
 		z-index: -1;
 
 		@include square(58);
-		border-radius: 50%;
+		border-radius: var(--radius-round);
 		background-color: var(--color-accent-light);
 
 		@include hover {

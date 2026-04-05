@@ -14,7 +14,7 @@
 
 	> button {
 		border: rem(1) solid var(--color-dark);
-		padding: rem(10) rem(20);
+		padding: rem(10) var(--spacing-20);
 
 		@include hover {
 			background-color: var(--color-accent);

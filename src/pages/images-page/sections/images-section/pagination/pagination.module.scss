@@ -29,7 +29,7 @@
 
 	&Item {
 		@include square(30);
-		border-radius: rem(4);
+		border-radius: var(--radius-4);
 		overflow: hidden;
 
 		&[data-is-active-page="true"] {
@@ -46,7 +46,7 @@
 		height: 100%;
 		font-family: var(--second-family);
 		font-weight: 300;
-		font-size: rem(18);
+		font-size: var(--font-size-18);
 		line-height: 133%;
 		color: var(--color-dark-alt);
 	}

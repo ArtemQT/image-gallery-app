@@ -5,7 +5,7 @@
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
-	padding: rem(20);
+	padding: var(--spacing-20);
 	background-color: var(--color-light);
 }
 
@@ -27,7 +27,7 @@
 }
 
 .description {
-	font-size: rem(18);
+	font-size: var(--font-size-18);
 	color: var(--color-dark-alt);
 	margin-bottom: rem(24);
 }
@@ -35,13 +35,13 @@
 .errorDetails {
 	background: #fdf2f2;
 	padding: rem(12);
-	border-radius: rem(8);
+	border-radius: var(--radius-8);
 	margin-bottom: rem(32);
-	border: 1px solid #fecaca;
+	border: rem(1) solid #fecaca;
 
 	code {
 		color: #dc2626;
-		font-size: rem(14);
+		font-size: var(--font-size-14);
 	}
 }
 
@@ -50,7 +50,7 @@
 	background-color: var(--color-accent);
 	color: white;
 	border: none;
-	border-radius: rem(4);
+	border-radius: var(--radius-4);
 	font-weight: 600;
 	cursor: pointer;
 	transition: transform var(--transition-duration);

@@ -79,7 +79,7 @@
 	&ToggleFavoriteButton {
 		@include square(39);
 
-		border-radius: 50%;
+		border-radius: var(--radius-round);
 		flex-shrink: 0;
 		transition-duration: var(--transition-duration);
 

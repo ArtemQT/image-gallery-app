@@ -5,22 +5,22 @@
 	padding-block: rem(65);
 
 	@include tablet {
-		padding: rem(30) rem(20) rem(20) rem(20);
+		padding: rem(30) var(--spacing-20) var(--spacing-20);
 	}
 
 	&Title {
 		@include text-shadow();
 
 		font-weight: 700;
-		font-size: rem(64);
+		font-size: var(--font-size-64);
 		text-transform: capitalize;
 		text-align: center;
 		color: #fffdfa;
 		margin-bottom: rem(87);
 
 		@include mobile {
-			font-size: rem(32);
-			margin-bottom: rem(26);
+			font-size: var(--font-size-32);
+			margin-bottom: var(--spacing-26);
 		}
 	}
 }

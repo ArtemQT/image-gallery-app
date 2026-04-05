@@ -16,13 +16,13 @@
 
 		font-family: var(--font-family-secondary);
 		font-weight: 700;
-		font-size: rem(64);
+		font-size: var(--font-size-64);
 		text-transform: capitalize;
 		text-align: center;
 		color: var(--color-dark-alt);
 
 		@include mobile {
-			font-size: rem(32);
+			font-size: var(--font-size-32);
 		}
 
 		> span {
@@ -52,6 +52,6 @@
 	}
 
 	&Description {
-		font-size: rem(48);
+		font-size: var(--font-size-48);
 	}
 }
