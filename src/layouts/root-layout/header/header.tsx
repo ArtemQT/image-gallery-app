@@ -23,7 +23,7 @@ export const Header = () => {
                 <Link to="/">
                     <img
                         src={logoImg}
-                        alt="modsen-gallery-logo"
+                        alt="image-gallery-app-logo"
                         width="287"
                         height="49"
                         className={styles.headerLogo}

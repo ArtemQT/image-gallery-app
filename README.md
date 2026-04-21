@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🖼️ Modsen Gallery
+# 🖼️ Image Gallery App
 
 ### _Элегантная галерея изображений, работающая на Unsplash API_
 
@@ -10,7 +10,7 @@
 [![React Query](https://img.shields.io/badge/React_Query-5-FF4154?style=for-the-badge&logo=react-query&logoColor=white)](https://tanstack.com/query)
 [![SCSS](https://img.shields.io/badge/SCSS-Modules-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
 
-[**🚀 Live Demo**](https://artemqt.github.io/modsen-gallery/) • [**🐛 Сообщить о баге**](https://github.com/ArtemQT/modsen-gallery/issues) • [**✨ Предложить фичу**](https://github.com/ArtemQT/modsen-gallery/issues)
+[**🚀 Live Demo**](https://artemqt.github.io/image-gallery-app/) • [**🐛 Сообщить о баге**](https://github.com/ArtemQT/image-gallery-app/issues) • [**✨ Предложить фичу**](https://github.com/ArtemQT/image-gallery-app/issues)
 
 ---
 
@@ -18,7 +18,7 @@
 
 ## 📖 О проекте
 
-**Modsen Gallery** — это современное SPA-приложение для поиска и просмотра высококачественных изображений через **Unsplash API**. Проект сочетает в себе чистую архитектуру, быструю сборку через **Vite** и умное кэширование запросов с помощью **React Query**.
+**Image Gallery App** — это современное SPA-приложение для поиска и просмотра высококачественных изображений через **Unsplash API**. Проект сочетает в себе чистую архитектуру, быструю сборку через **Vite** и умное кэширование запросов с помощью **React Query**.
 
 > 💡 Создано с акцентом на производительность, адаптивность и приятный пользовательский опыт.
 
@@ -56,7 +56,7 @@
 
 ## 🌐 Демо
 
-🔗 **Live:** [artemqt.github.io/modsen-gallery](https://artemqt.github.io/modsen-gallery/)
+🔗 **Live:** [artemqt.github.io/image-gallery-app](https://artemqt.github.io/image-gallery-app/)
 
 ---
 
@@ -73,8 +73,8 @@
 **1. Клонируйте репозиторий**
 
 ```bash
-git clone https://github.com/ArtemQT/modsen-gallery.git
-cd modsen-gallery
+git clone https://github.com/ArtemQT/image-gallery-app.git
+cd image-gallery-app
 ```
 
 **2. Установите зависимости**
@@ -126,7 +126,7 @@ npm run dev
 ## 🗂 Структура проекта
 
 ```
-modsen-gallery/
+image-gallery-app/
 ├── src/
 │   ├── app/              # Точка входа, роутер, провайдеры
 │   ├── layouts/          # Layout-компоненты (header, footer)

@@ -39,6 +39,6 @@ export const router = createBrowserRouter(
         },
     ],
     {
-        basename: '/modsen-gallery/',
+        basename: '/image-gallery-app/',
     },
 );

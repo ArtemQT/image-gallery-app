@@ -6,7 +6,7 @@ import svgr from 'vite-plugin-svgr';
 
 export default defineConfig(() => {
     return {
-        base: '/modsen-gallery/',
+        base: '/image-gallery-app/',
         plugins: [react(), svgr()],
         resolve: {
             alias: {

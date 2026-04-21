@@ -23,7 +23,7 @@ export const Footer = () => {
                             <img
                                 className={styles.logo}
                                 src={logoImg}
-                                alt="modsen-gallery logo"
+                                alt="image-gallery-app logo"
                                 width="267"
                                 height="49"
                                 loading="lazy"
